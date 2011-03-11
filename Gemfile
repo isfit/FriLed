@@ -9,6 +9,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'paperclip'
 gem 'devise'
 gem 'tabs_on_rails'
+gem 'mysql2'
 
 
 group :development do
