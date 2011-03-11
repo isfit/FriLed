@@ -1,0 +1,44 @@
+<title><%= @article.title %></title>
+
+<p id="notice"><%= notice %></p>
+
+<div id="visArtikkel">
+<div id="artImg"> 
+  <% if @article.youtube_link.nil?  || @article.youtube_link == "" %>
+  <%= image_tag(@article.contributor.avatar(:medium), :size => "180x220") %>
+<% else %>
+  <div style="margin-top:15px;" <iframe title="YouTube video player" width="400" height="330" src="http://www.youtube.com/embed/<%= @article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
+<% end %>
+
+</div>
+
+<p>
+  <h2 id="artOverskrift">
+    <%= @article.title %>
+   </h2>
+</p>
+
+
+<% if @article.youtube_link.nil?  || @article.youtube_link == "" %>
+<p>
+  <b>Av:</b>
+  <i><%= link_to  @article.contributor.contributor, @article.contributor %></i>
+</p>
+<% end %>
+
+<p>
+  <b>Kategori:</b>
+  <%= link_to @article.category.name, @article.category %>
+</p>
+<p>
+  <%= simple_format(@article.content) %>
+</p>
+<br />
+
+
+<% if admin_signed_in? %>
+  |
+  <%= link_to 'Edit', edit_article_path(@article) %> 
+<% end %>  
+
+</div>

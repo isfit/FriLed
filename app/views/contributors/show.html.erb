@@ -1,0 +1,38 @@
+
+<title><%= @contributor.contributor %></title>
+
+<p id="notice"><%= notice %></p>
+
+<div id="bidragsyter">
+ <%= image_tag @contributor.avatar.url(:medium) %>
+
+
+<h2>
+  <%= @contributor.contributor %>  
+</h2>
+
+<p>
+  <%= simple_format(@contributor.bio) %>
+</p>
+
+<br />
+<p>
+  <b>Tekster:</b>
+    <% @articles = @contributor.articles.all %>
+    <% @articles = @articles.reverse %>  
+    <% @articles.each do |a| %>
+        <p><%=link_to a.title, a %> </p>
+      <% end %>
+
+</p>
+
+<br />
+</div>
+
+<p>
+<!--  <%= link_to 'Alle bidragsytere', contributors_path %>-->
+  <% if admin_signed_in? %>
+    |
+    <%= link_to 'Endre', edit_contributor_path(@contributor) %>
+  <% end %>
+</p>

@@ -1,0 +1,135 @@
+<title>Siste</title>
+
+<div id="midtramme" class="grid_18">
+
+<h2>Siste</h2>
+
+<% @articles = Article.all %>
+<% @articles = @articles.reverse %>
+<% i = 0 %>
+<% @articles.first(9).each do |article| %>
+  <% if i == 0 %>
+    <div id="hovedArtikkel" class="grid_18 alpha omega">
+    <% if article.youtube_link.nil?  || article.youtube_link == "" %>
+    <%= link_to image_tag(article.contributor.avatar(:medium)), article %>
+    <% else %>
+    <div style="float:left;padding-right:7px;">   <iframe title="YouTube video player" width="250" height="218" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
+    <% end %>
+    <h1><%=link_to article.title, article%></h1>
+    <% if article.youtube_link.nil?  || article.youtube_link == "" %>
+    <h3><%= link_to article.contributor.contributor, article.contributor %></h3>
+    <% end %>
+    <p><%= simple_format(truncate(article.content, :length => 500, :separator => ' '))%></p>
+    <div id="lesMer"><%= link_to 'Les mer', article %></div>
+
+   </div>
+
+  <% elsif i == 1 %>
+    <% classtext ="artikkel grid_9 alpha"%>
+    <% i = 2 %>
+  <% else %>
+    <% classtext = "artikkel grid_9 omega" %>
+    <% i = 1 %>
+  <% end %>   
+  
+  <% if i != 0 %>
+  <div id="artikkelFelt" class="<%=classtext%>">
+      <% if article.youtube_link.nil?  || article.youtube_link == "" %>
+      <%= link_to image_tag(article.contributor.avatar(:medium)), article %>
+      <h1><%=link_to article.title, article%></h1>
+    <% else %>
+      <h1><%=link_to article.title, article%></h1>
+      <div style="padding: 5px 0 0 5px"> <iframe title="YouTube video player" width="250" height="145" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
+    <% end %>
+    <% if article.youtube_link.nil?  || article.youtube_link == "" %> 
+    <h3><%= link_to article.contributor.contributor, article.contributor %></h3>
+    <%= simple_format(truncate(article.content, :length => 90, :separator => ' '))%>
+   <div id="lesMer"><%= link_to 'Les mer', article %></div>
+   <% end %>
+   </div>
+   <% end %>
+   <% if i == 0 %>
+     <% i = 1 %>
+   <% end %>
+<% end %>
+</div><!-- Slutt midtramme -->
+
+
+<div id="hoyreramme" class="grid_6">
+<div id="twitter">
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+          new TWTR.Widget({
+            version: 2,
+            type: 'search',
+            search: '@isfit',
+            interval: 8000,
+            title: '',
+            subject: 'ISFiT på twitter',
+            width: 'auto',
+            height: 0,
+            theme: {
+              shell: {
+                background: '#8ec1da',
+                color: '250'
+              },
+              tweets: {
+                background: '',
+                color: 'blue',
+                links: 'black'
+              }
+            },
+            features: {
+              scrollbar: false,
+              loop: true,
+              live: true,
+              hashtags: true,
+              timestamp: true,
+              avatars: true,
+              toptweets: true,
+              behavior: 'default'
+            }
+          }).render().start();
+        </script>
+</div>
+<div id="twitter">
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+          new TWTR.Widget({
+            version: 2,
+            type: 'search',
+            search: '@Samfundet',
+            interval: 8000,
+            title: '',
+            subject: 'Samfundet på twitter',
+            width: 'auto',
+            height: 0,
+            theme: {
+              shell: {
+                background: '#8ec1da',
+                color: '250'
+              },
+              tweets: {
+                background: '',
+                color: 'blue',
+                links: 'black'
+              }
+            },
+            features: {
+              scrollbar: false,
+              loop: true,
+              live: true,
+              hashtags: true,
+              timestamp: true,
+              avatars: true,
+              toptweets: true,
+              behavior: 'default'
+            }
+          }).render().start();
+        </script>
+      </div>
+</div><!-- Slutt hoyreramme -->
+
+
+
+

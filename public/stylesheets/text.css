@@ -1,0 +1,98 @@
+body {
+
+	// font: 13px 'Helvetica','Times New Roman',Arial, Geneva, sans-serif;
+	font-size: 13px;
+	font-family: "Helvetica";
+	color:#333;
+	line-height:1.5;
+
+}
+
+p {
+	margin: 0 0 15px 0;
+}
+
+a {
+	color:black;
+}
+
+a:hover {
+	
+}
+
+#omeny h2 {
+	font-family:'franchise';
+	padding-left:290px;
+	margin-top:0px;
+	margin-bottom:3px;
+	text-align:center;
+	display:inline;
+	color:#8ec1da;
+}
+
+
+#omeny a{
+	padding: 0 5px 0 5px;
+	margin-top:7px;
+	color:white;
+	text-decoration: none;
+	float:right;
+}
+
+#omeny a:hover{
+	text-decoration:underline;
+}
+
+#bid {
+	float:left;
+}
+
+#footer h5 {
+	font-style:normal !important;
+	text-align:center;
+	color:#8ec1da;
+	font-family:'franchise';
+}
+
+#artOverskrift {
+	color:#3B5998;
+}
+
+h2 {
+	color:#444;
+	margin:10px 0 0px 0px;
+
+}
+
+
+
+/* `Headings
+----------------------------------------------------------------------------------------------------*/
+
+h1 {
+	font-size: 25px;
+}
+
+h2 {
+	font-size: 23px;
+}
+
+h3 {
+	font-size: 21px;
+}
+
+h4 {
+	font-size: 19px;
+}
+
+h5 {
+	font-size: 17px;
+}
+
+h6 {
+	font-size: 15px;
+}
+
+
+
+

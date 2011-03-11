@@ -1,0 +1,19 @@
+<p>
+  <b>Navn:</b>
+  <%= comment.commenter %>
+</p>
+
+<p>
+  <b>Kommentar:</b>
+  <%= simple_format(comment.body) %>
+</p>
+
+<p>
+  <% if user_signed_in? %>
+    <%= link_to 'Slett', [comment.article, comment],
+       	    :confirm => 'Er du sikker?',
+	    :method => :delete %>
+  <% end %>
+</p>
+
+<hr id="dashedHr" />

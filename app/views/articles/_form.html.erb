@@ -1,0 +1,44 @@
+<%= form_for(@article) do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  
+  <div class="field">
+    <%= f.label :Forfatter%>(Velg ISFiT for video uten klar bidragsyter)<br />
+    <%= select("article", "contributor_id", Contributor.all.collect {|c| [ c.contributor, c.id ] }, {:include_blank => 'None'})%>    
+  </div>
+  Hvis forfatter ikke i listen: <%= link_to 'Ny bidragsyter', new_contributor_path %> <br /><br />
+  <div class="field">
+    <%= f.label :Kategori%><br />
+    <%= select("article", "category_id", Category.all.collect {|d| [ d.name, d.id ] }, {:include_blank => 'None'})%>    
+  </div>
+  Hvis kategori ikke i listen: <%= link_to 'Ny kategori', new_category_path %> <br /><br />
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div><br />
+
+  Hvis video, legg inn youtube-koden her(11 tegn, både tall og bokstaver, står mot slutten av adressen).
+  <div class="field">
+ 	<%= f.text_field :youtube_link %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :innhold %>(Hvis film: Skriv kort hva filmen handler om) <br />
+    <%= f.text_area :content, :size => "95x40" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

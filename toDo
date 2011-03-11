@@ -1,0 +1,4 @@
+I devise:
+
+- host option for localhost i development.rb. Bruker der localhost:3000.
+- må i production settes til domenet

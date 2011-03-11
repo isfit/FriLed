@@ -1,0 +1,159 @@
+<title>Bidragsytere</title>
+
+<div id="midtramme" class="grid_18">
+
+<h1>Bidragsytere</h1>
+
+<% @contributors = Contributor.all %>
+<% @contributors.sort! { |a,b| a.contributor.downcase <=> b.contributor.downcase } %>
+
+<% i = 0 %>
+<% @contributors.each do |contributor| %>
+  <% if i == 0 %>
+    <div id="hovedArtikkel" class="grid_18 alpha omega">
+    <%= link_to image_tag(contributor.avatar(:medium)), contributor %>
+    <h1><%=link_to contributor.contributor, contributor %></h1>
+    <p><%= simple_format(truncate(contributor.bio, :length => 500, :separator => ' '))%></p>
+    <div id="lesMer"><%= link_to 'Les mer', contributor %></div>
+
+   </div>
+
+  <% elsif i == 1 %>
+    <% classtext ="artikkel grid_9 alpha"%>
+    <% i = 2 %>
+  <% else %>
+    <% classtext = "artikkel grid_9 omega" %>
+    <% i = 1 %>
+  <% end %>
+
+<% if i != 0 %>
+  <div id="artikkelFelt" class="<%=classtext%>">
+      <%= link_to image_tag(contributor.avatar(:medium)), contributor %>
+      <h1><%=link_to contributor.contributor, contributor%></h1>
+    <%= simple_format(truncate(contributor.bio, :length => 90, :separator => ' '))%>
+   <div id="lesMer"><%= link_to 'Les mer', contributor %></div>
+   <% end %>
+   </div>
+   <% if i == 0 %>
+     <% i = 1 %>
+   <% end %>
+<% end %>
+
+</div><!-- Slutt midtramme -->
+
+<div id="hoyreramme" class="grid_6">
+<div id="twitter">
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+          new TWTR.Widget({
+            version: 2,
+            type: 'search',
+            search: '@isfit',
+            interval: 8000,
+            title: '',
+            subject: 'ISFiT på twitter',
+            width: 'auto',
+            height: 0,
+            theme: {
+              shell: {
+                background: '#8ec1da',
+                color: '250'
+              },
+              tweets: {
+                background: '',
+                color: 'blue',
+                links: 'black'
+              }
+            },
+            features: {
+              scrollbar: false,
+              loop: true,
+              live: true,
+              hashtags: true,
+              timestamp: true,
+              avatars: true,
+              toptweets: true,
+              behavior: 'default'
+            }
+          }).render().start();
+        </script>
+</div>
+<div id="twitter">
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+          new TWTR.Widget({
+            version: 2,
+            type: 'search',
+            search: '@Samfundet',
+            interval: 8000,
+            title: '',
+            subject: 'Samfundet på twitter',
+            width: 'auto',
+            height: 0,
+            theme: {
+              shell: {
+                background: '#8ec1da',
+                color: '250'
+              },
+              tweets: {
+                background: '',
+                color: 'blue',
+                links: 'black'
+              }
+            },
+            features: {
+              scrollbar: false,
+              loop: true,
+              live: true,
+              hashtags: true,
+              timestamp: true,
+              avatars: true,
+              toptweets: true,
+              behavior: 'default'
+            }
+          }).render().start();
+        </script>
+</div>
+</div><!-- Slutt hoyreramme -->
+
+
+
+
+<!--
+<table id="artikkelOversikt">
+
+
+<% @contributors.each do |contributor| %>
+
+  <tr>
+    <td><%= link_to image_tag(contributor.avatar(:medium), :size => "70x80"), contributor %>  </td>
+    <td><%=  link_to contributor.contributor, contributor%> </td>
+    <td>  </td>
+    <td> 
+       <% if admin_signed_in? %>
+      <%= link_to 'Endre', edit_contributor_path(contributor) %>
+      <% end %>
+    <td>
+      <% if admin_signed_in? %>
+      <%= button_to "Slette", { :action => "destroy", :id => contributor.id },
+            :confirm => "Are you sure?", :method => :delete %>
+
+      <% end %>
+     </td>
+  </tr>
+
+  <tr>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+    <th>&nbsp;</th>
+  </tr>
+
+<% end %>
+</table>
+-->
+
+<% if admin_signed_in? %>
+  <%= link_to 'Ny bidragsyter', new_contributor_path %>
+<% end %>
+
