@@ -10,10 +10,10 @@
 <% i = 0 %>
 <% @contributors.each do |contributor| %>
   <% if i == 0 %>
-    <div id="hovedArtikkel" class="grid_18 alpha omega">
-    <%= link_to image_tag(contributor.avatar(:medium)), contributor %>
-    <h1><%=link_to contributor.contributor, contributor %></h1>
-    <p><%= simple_format(truncate(contributor.bio, :length => 500, :separator => ' '))%></p>
+    <div id="hovedArtikkel" class="grid_18 alpha">
+      <%= link_to image_tag(contributor.avatar(:medium)), contributor %>
+      <h1><%=link_to contributor.contributor, contributor%></h1>
+      <p><%= simple_format(truncate(contributor.bio, :length => 600, :separator => ' '))%></p>
     <div id="lesMer"><%= link_to 'Les mer', contributor %></div>
 
    </div>
@@ -26,21 +26,21 @@
     <% i = 1 %>
   <% end %>
 
-<% if i != 0 %>
-  <div id="artikkelFelt" class="<%=classtext%>">
-      <%= link_to image_tag(contributor.avatar(:medium)), contributor %>
-      <h1><%=link_to contributor.contributor, contributor%></h1>
-    <%= simple_format(truncate(contributor.bio, :length => 90, :separator => ' '))%>
+  <% if i != 0 %>
+  <div class="<%=classtext%>">
+      <%= link_to image_tag(contributor.avatar(:medium), :size => "144x170"), contributor %>
+      <h1><%=link_to contributor.contributor, contributor %></h1>
+      <%= simple_format(truncate(contributor.bio, :length => 120, :separator => ' '))%>
    <div id="lesMer"><%= link_to 'Les mer', contributor %></div>
-   <% end %>
    </div>
+   <% end %>
    <% if i == 0 %>
      <% i = 1 %>
    <% end %>
 <% end %>
 
-</div><!-- Slutt midtramme -->
 
+</div><!-- Slutt midtramme -->
 <div id="hoyreramme" class="grid_6">
 <div id="twitter">
         <script src="http://widgets.twimg.com/j/2/widget.js"></script>
@@ -113,7 +113,8 @@
             }
           }).render().start();
         </script>
-</div>
+      </div>
+
 </div><!-- Slutt hoyreramme -->
 
 

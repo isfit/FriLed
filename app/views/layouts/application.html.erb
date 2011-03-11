@@ -85,10 +85,13 @@ $(window).load(function() {
 <div id="innholdsramme" class="grid_25">
 
 <%= yield %>
+</div><!-- Slutt innholdsramme -->
 
 <div id="footer" class="grid_25"> <!--Start footer -->
-<h5>Frivillig ledelse</h5>
-</div><!-- Slutt innholdsramme -->
+  <%= link_to image_tag("isfit.jpg"), "http://www.isfit.org/" %>
+  <%= link_to image_tag("uka.png"), "http://www.uka.no/" %>
+  <%= link_to image_tag("samfundet.jpeg"), "http://www.samfundet.no/" %>
+  <div id="webmaster"><h6>Webmaster: Steinar H. Fretheim, steinar.fretheim[at]gmail.com</h6></div>
 </div><!-- Slutt footer -->
 </div><!-- Slutt hovedramme -->
 </body>

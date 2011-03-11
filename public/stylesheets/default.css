@@ -50,12 +50,13 @@ body {
 
 
 #innholdsramme {
-	background-color:#ECECEC;	
+	background-color:#EAEAEA;
+	padding-bottom:15px;	
 
 }
 
 #midtramme img {
-	border: 1px solid #CCCCCC;
+	//border: 1px solid #CCCCCC;
 }
 
 #hovedArtikkel {
@@ -63,13 +64,14 @@ body {
 	width:700px;
 	background-color:#FAFAFA;
 	padding: 5px 5px 5px 5px;
+	margin-bottom:5px;
 
 }
 
 #hovedArtikkel p {
 	color:#333333; 
 	font-size:12px; 
-	margin: 5px 10px 0 0;
+	margin: 5px 10px 5px 0;
 }
 
 
@@ -111,37 +113,30 @@ body {
 	text-decoration:underline;
 }
 
-#hovedArtikkel lesMer {
+#lesMer a {
 	margin-top:0;
 	display:inline;
-}
-
-	
-
-#artikkel lesMer {
-	display:inline;
-}
-
-#lesMer a {
-	color:#3B5998;
-}
-
-#lesMer a:hover {
 	text-decoration:underline;
+	color:#3B5998;
+	margin-top: 0;
 }
 
 
 .artikkel {
-	height:185px; 
-	margin-top:10px;
+	height:180px; 
 	background-color:#FAFAFA;
+	padding: 5px 0px 0px 0px;
+	margin: 5px 0px 5px 0px;
 
 }
+
+
 .artikkel img {
-	width:144.5 px;
-	height:170px; 
+	//width:144.5 px;
+	//height:170px; 
 	float:left; 
-	margin: 5px 7px 5px 5px;
+	margin-right: 7px;
+	margin-left: 5px;
 }
 
 .artikkel a {
@@ -150,8 +145,6 @@ body {
 
 .artikkel h1 {
 	font-size:17px;  
-	margin:5px 0 2px 0;
-	padding:0 5px 0 5px;
 }
 
 .artikkel h1 a {
@@ -167,14 +160,13 @@ body {
 
 
 .artikkel p {
-	padding: 0px 5px 5px 5px;
 	color:#333333; 
 	font-size:12px; 
-	margin:5px 10px 0 0;
+	margin-bottom:5px;
+	margin-top:5px;
 }
 
 .artikkel h3 {
-	margin: 0 0 0 5px;
 	font-size:13px;
 	font-style:italic;
 	font-weight:normal;
@@ -202,9 +194,14 @@ body {
 }
 
 #footer {
-	margin-top:15px;
-	background: url(../images/umeny.png) repeat-x;
+	border-top: 2px solid #666;
+	
 }
+
+#footer img {
+	padding: 10px 15px 5px 5px;
+}
+
 
 
 #bidragsyter {
@@ -265,6 +262,12 @@ td {
 	margin: 0 0 30px 0;
 }
 
+#webmaster {
+	
+	float:right;
+	padding-right:5px;
+	margin-top:80px;
+}
 
 
 

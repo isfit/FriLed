@@ -1,0 +1,17 @@
+<title><%= @page.title %></title>
+
+<div id="bidragsyter">
+<%= image_tag @page.avatar.url(:medium) %>
+
+<h2><%= @page.title %></h2>
+
+<p><%= simple_format(@page.content) %></p>
+</div>
+
+
+<% if admin_signed_in? %>
+  <%= button_to "Slette", { :action => "destroy", :id => @page.id },
+              :confirm => "Are you sure?", :method => :delete %>
+|
+  <%= link_to 'Edit', edit_page_path(@page) %>
+<% end %>

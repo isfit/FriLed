@@ -1,0 +1,30 @@
+<h1>Listing pages</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pages.each do |page| %>
+  <tr>
+    <td><%= link_to page.title, page %></td>
+    <td> 
+      <% if admin_signed_in? %>
+      <%= button_to "Slette", { :action => "destroy", :id => page.id },
+              :confirm => "Are you sure?", :method => :delete %>
+      <% end %>
+    </td>
+    <td>
+      <% if admin_signed_in? %>
+      <%= link_to 'Edit', edit_page_path(page) %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Page', new_page_path %>

@@ -37,7 +37,9 @@
 
 
 <% if admin_signed_in? %>
-  |
+  <%= button_to "Slette", { :action => "destroy", :id => @article.id },
+              :confirm => "Are you sure?", :method => :delete %>
+|
   <%= link_to 'Edit', edit_article_path(@article) %> 
 <% end %>  
 

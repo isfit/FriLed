@@ -13,7 +13,7 @@
 <% i = 0 %>
 <% @articles.each do |article| %>
   <% if i == 0 %>
-    <div id="hovedArtikkel" class="grid_18 alpha omega">
+    <div id="hovedArtikkel" class="grid_18 alpha">
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
     <%= link_to image_tag(article.contributor.avatar(:medium)), article %>
     <% else %>
@@ -23,7 +23,7 @@
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
     <h3><%= link_to article.contributor.contributor, article.contributor %></h3>
     <% end %>
-    <p><%= simple_format(truncate(article.content, :length => 500, :separator => ' '))%></p>
+    <p><%= simple_format(truncate(article.content, :length => 530, :separator => ' '))%></p>
     <div id="lesMer"><%= link_to 'Les mer', article %></div>
 
    </div>
@@ -36,10 +36,10 @@
     <% i = 1 %>
   <% end %>
 
-<% if i != 0 %>
-  <div id="artikkelFelt" class="<%=classtext%>">
-      <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-      <%= link_to image_tag(article.contributor.avatar(:medium)), article %>
+  <% if i != 0 %>
+  <div class="<%=classtext%>">
+    <% if article.youtube_link.nil?  || article.youtube_link == "" %>
+      <%= link_to image_tag(article.contributor.avatar(:medium), :size => "144x170"), article %>
       <h1><%=link_to article.title, article%></h1>
     <% else %>
       <h1><%=link_to article.title, article%></h1>
@@ -47,7 +47,7 @@
     <% end %>
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
     <h3><%= link_to article.contributor.contributor, article.contributor %></h3>
-    <%= simple_format(truncate(article.content, :length => 90, :separator => ' '))%>
+    <%= simple_format(truncate(article.content, :length => 120, :separator => ' '))%>
    <div id="lesMer"><%= link_to 'Les mer', article %></div>
    <% end %>
    </div>
