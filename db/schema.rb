@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20110219122735) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
+    t.string   "category"
     t.string   "title"
     t.text     "content"
     t.datetime "created_at"
