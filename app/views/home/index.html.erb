@@ -1,4 +1,4 @@
-<title>Siste</title>
+<title>Frivillig Ledelse</title>
 
 <div id="midtramme" class="grid_18">
 
@@ -43,7 +43,11 @@
     <% end %>
     <% if article.youtube_link.nil?  || article.youtube_link == "" %> 
     <h3><%= link_to article.contributor.contributor, article.contributor %></h3>
-    <%= simple_format(truncate(article.content, :length => 120, :separator => ' '))%>
+    <% if article.title.length < 30 %>
+      <%= simple_format(truncate(article.content, :length => 130, :separator => ' '))%>
+    <% else %>
+      <%= simple_format(truncate(article.content, :length => 100, :separator => ' '))%>
+    <% end %> 
    <div id="lesMer"><%= link_to 'Les mer', article %></div>
    <% end %>
    </div>

@@ -71,7 +71,7 @@ body {
 #hovedArtikkel p {
 	color:#333333; 
 	font-size:12px; 
-	margin: 5px 10px 5px 0;
+	margin: 5px 5px 5px 0;
 }
 
 
@@ -115,10 +115,8 @@ body {
 
 #lesMer a {
 	margin-top:0;
-	display:inline;
 	text-decoration:underline;
 	color:#3B5998;
-	margin-top: 0;
 }
 
 
@@ -144,7 +142,8 @@ body {
 }
 
 .artikkel h1 {
-	font-size:17px;  
+	font-size:17px;
+	padding-right: 2px;  
 }
 
 .artikkel h1 a {
@@ -164,6 +163,7 @@ body {
 	font-size:12px; 
 	margin-bottom:5px;
 	margin-top:5px;
+	padding-right:5px;
 }
 
 .artikkel h3 {
