@@ -26,7 +26,7 @@
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
     <h3><%= link_to article.contributor.contributor, article.contributor %></h3>
     <% end %>
-    <p><%= simple_format(truncate(article.content, :length => 530, :separator => ' '))%></p>
+    <p><%= raw format(truncate(article.content, :length => 530, :separator => ' '))%></p>
     <div id="lesMer"><%= link_to 'Les mer', article %></div>
 
    </div>
@@ -50,7 +50,7 @@
     <% end %>
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
     <h3><%= link_to article.contributor.contributor, article.contributor %></h3>
-    <%= simple_format(truncate(article.content, :length => 120, :separator => ' '))%>
+    <%= raw format(truncate(article.content, :length => 120, :separator => ' '))%>
    <div id="lesMer"><%= link_to 'Les mer', article %></div>
    <% end %>
    </div>

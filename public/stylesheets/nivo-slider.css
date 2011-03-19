@@ -86,7 +86,7 @@
 #slider {
 	width:960px; /* Change this to your images width */
 	height:200px; /* Change this to your images height */
-	background:url(../images/loading.gif) no-repeat 50% 50% !important;
+	background:url(../images/1.jpg) no-repeat !important;
 	float:left;
 }
 

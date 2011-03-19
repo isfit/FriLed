@@ -31,7 +31,7 @@
   <%= link_to @article.category.name, @article.category %>
 </p>
 <p>
-  <%= simple_format(@article.content) %>
+  <%= raw format(@article.content) %>
 </p>
 <br />
 

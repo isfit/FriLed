@@ -8,10 +8,12 @@ FriLed::Application.routes.draw do
   resources :categories
 
   resources :contributors
-
+   
   resources :articles do
     resources :comments
   end
+  
+  resources :pages
 
   get "home/index"
 
