@@ -32,22 +32,29 @@
 
 <div id="sliderWrapper" class="grid_25">
 <div id="slider" class="nivoSlider">
- 
+
+  <%= image_tag "1.jpg" %>
   <%= image_tag "2.jpg" %>
   <%= image_tag "3.jpg" %>
   <%= image_tag "4.jpg" %>
-  <%= image_tag "5.jpg" %>
   <%= image_tag "6.jpg" %>
   <%= image_tag "7.jpg" %>
   <%= image_tag "8.jpg" %>
   <%= image_tag "9.jpg" %>
   <%= image_tag "10.jpg" %>
 </div>
-
+<div id="bakgrunn">
+</div>
 <script type="text/javascript">
 $(window).load(function() {
-      $('#slider').nivoSlider({effect:'fade', pauseOnHover:false, controlNav:false,pauseTime:6000});
-});
+      $('#slider').nivoSlider({effect:'fade', pauseOnHover:false, controlNav:false,pauseTime:6000, prevText: '<-', nextText: '->', afterLoad: 
+	function() {
+		$('#bakgrunn').css ("display", "none");
+	}
+}
+);
+}
+);
 </script>
 </div><!-- Slutt sliderWrapper -->
 

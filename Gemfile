@@ -10,6 +10,8 @@ gem 'paperclip'
 gem 'devise'
 gem 'tabs_on_rails'
 gem 'bluecloth'
+gem 'authlogic'
+
 #gem 'mysql2'
 
 

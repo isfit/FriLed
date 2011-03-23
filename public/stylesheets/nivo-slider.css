@@ -86,10 +86,18 @@
 #slider {
 	width:960px; /* Change this to your images width */
 	height:200px; /* Change this to your images height */
-	background:url(../images/1.jpg) no-repeat !important;
-	float:left;
+	// background:url(../images/8.jpg) 50% 50% no-repeat !important;
+	position:absolute;
+	
 }
 
+#bakgrunn {
+	width:960px; /* Change this to your images width */
+	height:200px; /* Change this to your images height */
+	background:url(../images/8.jpg) 50% 50% no-repeat !important;
+	position:absolute;
+
+}
 
 #slider img {
     position:absolute;
@@ -103,28 +111,7 @@
     display:block;
 }
 
-#slider2 {
-	position:absolute;
-	right:0px;
-	top:0px;
-	width:260px; /* Change this to your images width */
-	height:200px; /* Change this to your images height */
-	background-image:url(../images/loading.gif) no-repeat 50% 50%;
-	float:right;
-}
 
-
-#slider2 img {
-    position:absolute;
-    top:0px;
-    left:0px;
-    display:none;
-}
-
-#slider2 a {
-    border:0;
-    display:block;
-}
 
 #sliderWrapper {
 	height:200px;
