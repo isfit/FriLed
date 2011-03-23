@@ -12,7 +12,7 @@ gem 'tabs_on_rails'
 gem 'bluecloth'
 gem 'authlogic'
 
-#gem 'mysql2'
+gem 'mysql2'
 
 
 group :development do
