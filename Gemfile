@@ -13,7 +13,7 @@ gem 'bluecloth'
 gem 'authlogic'
 gem 'cancan'
 
-#gem 'mysql2'
+gem 'mysql2'
 
 
 group :development do
