@@ -31,7 +31,7 @@
 
 <p>
 <!--  <%= link_to 'Alle bidragsytere', contributors_path %>-->
-  <% if admin_signed_in? %>
+  <% if can? :update, @article %>
     |
     <%= link_to 'Endre', edit_contributor_path(@contributor) %>
   <% end %>

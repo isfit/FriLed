@@ -10,12 +10,12 @@
     <td><%= link_to c.name, c %>  </td>
     <td>  </td>
     <td>
-      <% if admin_signed_in? %>
+      <% if can? :update, @category  %>
       <%= link_to 'Edit', edit_category_path(c) %>
       <% end %>
     </td>
     <td>
-      <% if admin_signed_in? %>
+      <% if can? :destroy, @category %>
       <%= button_to "Slette", { :action => "destroy", :id => c.id },
             :confirm => "Are you sure?", :method => :delete %>
       <% end %>
@@ -33,7 +33,7 @@
 <% end %>
 </table>
 
-<% if admin_signed_in? %>
+<% if can? :create, @category %>
   <%= link_to 'Ny kategori', new_category_path %>
 <% end %>
 

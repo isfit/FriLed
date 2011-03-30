@@ -2,10 +2,11 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.xml
   
-  before_filter :authenticate_admin!, :except => [:index, :show]
+  load_and_authorize_resource
+   
+  #  before_filter :authenticate_admin!, :except => [:index, :show]
 
   def index
-    @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +17,6 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.xml
   def show
-    @category = Category.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +27,6 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.xml
   def new
-    @category = Category.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,14 +36,12 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1/edit
   def edit
-    @category = Category.find(params[:id])
   end
 
   # POST /categories
   # POST /categories.xml
 
   def create
-    @category = Category.create(params[:category])
    # @category = Category.new(params[:category])
 
     respond_to do |format|
@@ -61,7 +58,6 @@ class CategoriesController < ApplicationController
   # PUT /categories/1
   # PUT /categories/1.xml
   def update
-    @category = Category.find(params[:id])
 
     respond_to do |format|
       if @category.update_attributes(params[:category])
@@ -77,7 +73,6 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.xml
   def destroy
-    @category = Category.find(params[:id])
     @category.destroy
 
     respond_to do |format|

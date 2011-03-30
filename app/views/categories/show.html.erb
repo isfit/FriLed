@@ -62,7 +62,7 @@
 
 
 
-<% if admin_signed_in? %>
+<% if can? :update, @article %>
   <%= link_to 'Endre', edit_category_path(@category) %>
 <% end %>
 </div> <!-- Slutt midtramme -->

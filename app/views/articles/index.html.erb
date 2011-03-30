@@ -163,12 +163,12 @@
       <td><i><%=  link_to article.contributor.contributor, article.contributor%></i> </td>
       <td><%= link_to article.category.name, article.category %></td> 
       <td>
-        <% if admin_signed_in? %>
+        <% if can? :update, @article %>
         <%= link_to 'Endre', edit_article_path(article) %>
         <% end %>
       </td>
       <td>
-        <% if admin_signed_in? %>
+        <% if can? :destroy, @article %>
           <%= button_to "Slette", { :action => "destroy", :id => article.id },
               :confirm => "Are you sure?", :method => :delete %>
 
@@ -182,6 +182,6 @@
 
 <br />
 
-<% if admin_signed_in? %>
+<% if can? :create, @article %>
 <%= link_to 'Ny tekst', new_article_path %>
 <% end %>

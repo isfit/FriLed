@@ -131,11 +131,11 @@
     <td><%=  link_to contributor.contributor, contributor%> </td>
     <td>  </td>
     <td> 
-       <% if admin_signed_in? %>
+       <% if can? :update, @contributor %>
       <%= link_to 'Endre', edit_contributor_path(contributor) %>
       <% end %>
     <td>
-      <% if admin_signed_in? %>
+      <% if can? :destroy, @contributor %>
       <%= button_to "Slette", { :action => "destroy", :id => contributor.id },
             :confirm => "Are you sure?", :method => :delete %>
 
@@ -154,7 +154,7 @@
 </table>
 -->
 
-<% if admin_signed_in? %>
+<% if can? :create, @contributor %>
   <%= link_to 'Ny bidragsyter', new_contributor_path %>
 <% end %>
 

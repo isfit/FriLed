@@ -1,11 +1,12 @@
 class ContributorsController < ApplicationController
   # GET /contributors
   # GET /contributors.xml
+   
+  load_and_authorize_resource
   
-  before_filter :authenticate_admin!, :except => [:index, :show]
+  #  before_filter :authenticate_admin!, :except => [:index, :show]
 
   def index
-    @contributors = Contributor.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +17,6 @@ class ContributorsController < ApplicationController
   # GET /contributors/1
   # GET /contributors/1.xml
   def show
-    @contributor = Contributor.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +27,6 @@ class ContributorsController < ApplicationController
   # GET /contributors/new
   # GET /contributors/new.xml
   def new
-    @contributor = Contributor.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,13 +36,11 @@ class ContributorsController < ApplicationController
 
   # GET /contributors/1/edit
   def edit
-    @contributor = Contributor.find(params[:id])
   end
 
   # POST /contributors
   # POST /contributors.xml
   def create
-    @contributor = Contributor.create(params[:contributor])
    # @contributor = Contributor.new(params[:contributor])
 
     respond_to do |format|
@@ -60,7 +57,6 @@ class ContributorsController < ApplicationController
   # PUT /contributors/1
   # PUT /contributors/1.xml
   def update
-    @contributor = Contributor.find(params[:id])
 
     respond_to do |format|
       if @contributor.update_attributes(params[:contributor])
@@ -76,7 +72,6 @@ class ContributorsController < ApplicationController
   # DELETE /contributors/1
   # DELETE /contributors/1.xml
   def destroy
-    @contributor = Contributor.find(params[:id])
     @contributor.destroy
 
     respond_to do |format|

@@ -36,10 +36,14 @@
 <br />
 
 
-<% if admin_signed_in? %>
+<% if can? :destroy, @article %>
   <%= button_to "Slette", { :action => "destroy", :id => @article.id },
               :confirm => "Are you sure?", :method => :delete %>
+<% end %>
 |
+
+<% if can? :update, @article %>
+
   <%= link_to 'Edit', edit_article_path(@article) %> 
 <% end %>  
 
