@@ -269,6 +269,14 @@ td {
 	margin-top:80px;
 }
 
+#list {
+	display:none;
+}
+
+#taboloid {
+	display:block;
+}
+
 
 
 

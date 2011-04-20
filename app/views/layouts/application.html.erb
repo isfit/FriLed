@@ -9,6 +9,27 @@
   <%= yield :script %>
   <%= csrf_meta_tag %>
 
+<script type="text/javascript">
+function byttVisning()
+{
+  var bjarne = new String();
+  bjarne = document.getElementById('list').style.display;
+
+  if(document.getElementById('list').style.display=='none') {
+    document.getElementById('taboloid').style.display='none';
+    document.getElementById('list').style.display='block';
+  } 
+  
+  else {
+    document.getElementById('taboloid').style.display='block';
+    document.getElementById('list').style.display='none';
+  }
+}
+
+
+</script>
+
+
 </head>
 
 <body>
@@ -17,12 +38,21 @@
   <div id="ofaner">  
   <h2>Frivillig ledelse</h2> 
   <div id="bid">
-      <%= link_to 'Bidragsytere', contributors_path %>
+    
+      <% @pages = Page.all %>
+      <% @pages.each do |p| %>
+        <%= link_to p.title, page_path(p) %>
+      <% end %>
+   <%= link_to 'Bidragsytere', contributors_path %>
    </div>
-    <% if cannot? :destroy, Article %>
+    <% if !user_signed_in? %>
+    
+      <%= link_to 'Opprett bruker', new_user_registration_path %>
       <%= link_to 'Logg inn', new_user_session_path %>
+      
     <% end %>
-    <% if can? :destroy, Article %>
+    <% if user_signed_in? %>
+      <%= link_to 'Endre profil', edit_user_registration_path %>
       <%= link_to 'Logg ut', destroy_user_session_path %> 
       <%= link_to 'Kategorier', categories_path %>
       <%= link_to 'Ny tekst', new_article_path %>
@@ -99,7 +129,7 @@ $(window).load(function() {
   <%= link_to image_tag("isfit.jpg"), "http://www.isfit.org/" %>
   <%= link_to image_tag("uka.png"), "http://www.uka.no/" %>
   <%= link_to image_tag("samfundet.jpeg"), "http://www.samfundet.no/" %>
-  <div id="webmaster"><h6>Webmaster: Steinar H. Fretheim, steinar.fretheim[at]gmail.com</h6></div>
+  <div id="webmaster"><h6>Editor in Chief: Sanna Drogset Børstad, sannadro[at]isfit.org</h6></div>
 </div><!-- Slutt footer -->
 </div><!-- Slutt hovedramme -->
 </body>

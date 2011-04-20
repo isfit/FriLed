@@ -5,9 +5,11 @@ class Ability
    user ||= User.new # guest user
 
    if user.role? :admin
-     can :manage, :all  
+     can :manage, :all 
+     can :see_timestamps, User 
    else 
      can :read, :all
+     can :see_timestamps, User, :id => user.id
    end
 
     # Define abilities for the passed in user here. For example:

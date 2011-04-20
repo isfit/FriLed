@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
 
-  before_filter :authenticate_admin!, :except => [:index, :show]
 
 # GET /pages
   # GET /pages.xml

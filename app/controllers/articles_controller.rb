@@ -16,13 +16,6 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.xml
   def show
-   # if @article.visits == nil 
-    #  addcount  = 1
-   # else 
-    #   addcount = @article.visits += 1 
-   # end
-   # @article.update_attribute "visits", addcount
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @article }

@@ -12,7 +12,7 @@ gem 'tabs_on_rails'
 gem 'bluecloth'
 gem 'authlogic'
 gem 'cancan'
-
+gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'mysql2'
 
 

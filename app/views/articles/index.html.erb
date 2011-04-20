@@ -1,12 +1,16 @@
 <title>Alle tekster</title>
 
-
 <div id="midtramme" class="grid_18">
 
 <h2>Alle tekster</h2>
 
+<div >
+<button type="button" onclick="byttVisning()">Bjarne</button>
+</div>
+
 <!-- Husk å fjerne .first(7) ved kopiering -->
 
+<div id="taboloid">
 <% @articles = Article.all %>
 <% @articles.sort! { |a,b| a.title.downcase <=> b.title.downcase } %>
 
@@ -56,6 +60,55 @@
      <% i = 1 %>
    <% end %>
 <% end %>
+</div>
+
+<div id="list">
+<table id="artikkelOversikt">
+    
+  <tr>
+    <th></th>
+    <th>Tittel</th>
+    <th>Av</th>
+    <th>Kategori</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @articles = @articles.reverse %>
+
+<% @articles.each do |article| %>
+    <tr>
+      <% if article.youtube_link.nil?  || article.youtube_link == "" %>
+        <td><%= link_to image_tag(article.contributor.avatar(:medium), :size => "70x80"), article %>
+      <% else %>
+        <td> <iframe title="YouTube video player" width="70" height="70" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></td>
+      <% end %>
+      <td><%= link_to article.title, article %>  </td>
+      <td><i><%=  link_to article.contributor.contributor, article.contributor%></i> </td>
+      <td><%= link_to article.category.name, article.category %></td> 
+      <td>
+        <% if can? :update, @article %>
+        <%= link_to 'Endre', edit_article_path(article) %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :destroy, @article %>
+          <%= button_to "Slette", { :action => "destroy", :id => article.id },
+              :confirm => "Are you sure?", :method => :delete %>
+
+        <% end %>
+       </td>
+    </tr>
+<% end %>
+
+</table>
+</div>
+
+<script type="text/javascript">
+  byttVisning();
+</script>
+
+
 
 </div><!-- Slutt midtramme -->
 
@@ -137,48 +190,6 @@
 
 
 
-
-<!--
-<table id="artikkelOversikt">
-    
-  <tr>
-    <th></th>
-    <th>Tittel</th>
-    <th>Av</th>
-    <th>Kategori</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @articles = @articles.reverse %>
-
-<% @articles.each do |article| %>
-    <tr>
-      <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-        <td><%= link_to image_tag(article.contributor.avatar(:medium), :size => "70x80"), article %>
-      <% else %>
-        <td> <iframe title="YouTube video player" width="70" height="70" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></td>
-      <% end %>
-      <td><%= link_to article.title, article %>  </td>
-      <td><i><%=  link_to article.contributor.contributor, article.contributor%></i> </td>
-      <td><%= link_to article.category.name, article.category %></td> 
-      <td>
-        <% if can? :update, @article %>
-        <%= link_to 'Endre', edit_article_path(article) %>
-        <% end %>
-      </td>
-      <td>
-        <% if can? :destroy, @article %>
-          <%= button_to "Slette", { :action => "destroy", :id => article.id },
-              :confirm => "Are you sure?", :method => :delete %>
-
-        <% end %>
-       </td>
-    </tr>
-<% end %>
-
-</table>
--->
 
 <br />
 

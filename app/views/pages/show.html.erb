@@ -9,9 +9,12 @@
 </div>
 
 
-<% if admin_signed_in? %>
+<% if can? :destroy, @page %>
   <%= button_to "Slette", { :action => "destroy", :id => @page.id },
               :confirm => "Are you sure?", :method => :delete %>
 |
+<% end %>
+
+<% if can? :edit, @page %>
   <%= link_to 'Edit', edit_page_path(@page) %>
 <% end %>
