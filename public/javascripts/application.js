@@ -1,6 +1,7 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+/*
 function validate_field(name, value, field) {
   var postData = { };
   postData['field'] = name;
@@ -52,7 +53,7 @@ $(document).ajaxSend(function(event, request, settings) {
 
 	*/
 
-	
+	/*
 	var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
 
 	function countdown(yr,m,d){
@@ -104,3 +105,4 @@ $(document).ajaxSend(function(event, request, settings) {
 	var deadlineYear = deadline.getYear();
 	if (deadlineYear < 1000)
 	deadlineYear+=1900
+*/

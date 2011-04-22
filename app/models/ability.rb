@@ -7,10 +7,19 @@ class Ability
    if user.role? :admin
      can :manage, :all 
      can :see_timestamps, User 
-   else 
+   elsif user.role? :editor
+     can :create, Article
+     can :update, Article
      can :read, :all
-     can :see_timestamps, User, :id => user.id
+   elsif user.role? :contributor
+     can :read, :all
+     can :create, Article
+     can :manage, Article, :user_id => user.id 
+     can :see_timestamps, User, :user_id => user.id
+   else
+     can :read, :all
    end
+   
 
     # Define abilities for the passed in user here. For example:
     #

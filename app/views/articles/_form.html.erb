@@ -12,12 +12,14 @@
   <% end %>
   
 
-  
+<!--  
   <div class="field">
     <%= f.label :Forfatter%>(Velg ISFiT for video uten klar bidragsyter)<br />
     <%= select("article", "contributor_id", Contributor.all.collect {|c| [ c.contributor, c.id ] }, {:include_blank => 'None'})%>    
   </div>
-  Hvis forfatter ikke i listen: <%= link_to 'Ny bidragsyter', new_contributor_path %> <br /><br />
+  Hvis forfatter ikke i listen: <%= link_to 'Ny bidragsyter', new_contributor_path %> <br /><br />i
+-->
+ 
   <div class="field">
     <%= f.label :Kategori%><br />
     <%= select("article", "category_id", Category.all.collect {|d| [ d.name, d.id ] }, {:include_blank => 'None'})%>    

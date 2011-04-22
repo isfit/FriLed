@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   # GET /articles/new.xml
   def new
-
+    @article.user = current_user
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @article }
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.xml
   def create
-
+    @article.user = current_user
     respond_to do |format|
       if @article.save
         format.html { redirect_to(@article, :notice => 'Article was successfully created.') }

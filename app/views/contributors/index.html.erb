@@ -4,9 +4,13 @@
 
 <h1>Bidragsytere</h1>
 
+<button type="button" onclick="byttVisning()">Bjarne</button>
+
 <% @contributors = Contributor.all %>
 <% @contributors.sort! { |a,b| a.contributor.downcase <=> b.contributor.downcase } %>
 
+
+<div id="taboloid">
 <% i = 0 %>
 <% @contributors.each do |contributor| %>
   <% if i == 0 %>
@@ -38,6 +42,49 @@
      <% i = 1 %>
    <% end %>
 <% end %>
+</div>
+
+
+<div id="list">
+<table id="artikkelOversikt">
+
+  <tr>
+    <th></th>
+    <th>Navn</th>
+    <th>Bio</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+<% @contributors.each do |contributor| %>
+    <tr>
+      <td><%= link_to image_tag(contributor.avatar(:medium), :size => "70x80"), contributor %>
+      <td><%= link_to contributor.contributor, contributor %>  </td>
+      <td><%= raw format(truncate(contributor.bio, :length => 200, :separator => ' '))%>
+      <td>
+        <% if can? :update, @contributor %>
+        <%= link_to 'Endre', edit_contributor_path(contributor) %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :destroy, @contributor %>
+          <%= button_to "Slette", { :action => "destroy", :id => contributor.id },
+              :confirm => "Are you sure?", :method => :delete %>
+
+        <% end %>
+       </td>
+    </tr>
+<% end %>
+
+</table>
+</div>
+
+
+
+<script type="text/javascript">
+  byttVisning();
+</script>
 
 
 </div><!-- Slutt midtramme -->

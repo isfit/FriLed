@@ -5,7 +5,7 @@
 <div id="visArtikkel">
 <div id="artImg"> 
   <% if @article.youtube_link.nil?  || @article.youtube_link == "" %>
-  <%= image_tag(@article.contributor.avatar(:medium), :size => "180x220") %>
+  <%= image_tag(@article.user.avatar(:medium), :size => "180x220") %>
 <% else %>
   <div style="margin-top:15px;" <iframe title="YouTube video player" width="400" height="330" src="http://www.youtube.com/embed/<%= @article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
 <% end %>
@@ -22,7 +22,7 @@
 <% if @article.youtube_link.nil?  || @article.youtube_link == "" %>
 <p>
   <b>Av:</b>
-  <i><%= link_to  @article.contributor.contributor, @article.contributor %></i>
+  <i><%= link_to  @article.user.name, @article.user %></i>
 </p>
 <% end %>
 
@@ -35,16 +35,20 @@
 </p>
 <br />
 
+<% if can? :update, @article %>
+
+  <%= link_to 'Endre', edit_article_path(@article) %> 
+<% end %>  
 
 <% if can? :destroy, @article %>
   <%= button_to "Slette", { :action => "destroy", :id => @article.id },
-              :confirm => "Are you sure?", :method => :delete %>
+              :confirm => "Are you sure?", :method => :delete %> 
 <% end %>
-|
 
-<% if can? :update, @article %>
 
-  <%= link_to 'Edit', edit_article_path(@article) %> 
-<% end %>  
+
+<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://localhost:3000/articles/<%= @article.id %>" show_faces="true" width="450" font=""></fb:like>
+
+<div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#appId=APP_ID&amp;xfbml=1"></script><fb:comments href="http://localhost:3000/articles/<%= @article.id %>" num_posts="5" width="700"></fb:comments>
 
 </div>

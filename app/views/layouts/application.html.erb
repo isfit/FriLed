@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 
 <p class="notice"><%= notice %></p>
-<html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= javascript_include_tag 'jquery','application', 'jquery.simplemodal-1.3.5.min', 'imgareaselect', 'jquery.nivo.slider'%>
+  <%= javascript_include_tag :defaults, 'jquery', 'jquery.simplemodal-1.3.5.min', 'imgareaselect', 'jquery.nivo.slider' %>
+  <script>
+  // this allows jquery to be called along with scriptaculous and YUI without any conflicts
+  // the only difference is all jquery functions should be called with $j instead of $
+  // e.g. $j('#div_id').stuff instead of $('#div_id').stuff
+  var $j = jQuery.noConflict();
+</script>
   <%= yield :script %>
   <%= csrf_meta_tag %>
 
@@ -43,7 +48,7 @@ function byttVisning()
       <% @pages.each do |p| %>
         <%= link_to p.title, page_path(p) %>
       <% end %>
-   <%= link_to 'Bidragsytere', contributors_path %>
+   <%= link_to 'Bidragsytere', users_path %>
    </div>
     <% if !user_signed_in? %>
     
@@ -52,9 +57,8 @@ function byttVisning()
       
     <% end %>
     <% if user_signed_in? %>
-      <%= link_to 'Endre profil', edit_user_registration_path %>
       <%= link_to 'Logg ut', destroy_user_session_path %> 
-      <%= link_to 'Kategorier', categories_path %>
+      <%= link_to 'Endre profil', edit_user_registration_path %>
       <%= link_to 'Ny tekst', new_article_path %>
      <% end %>
   </div><!-- Slutt ofaner -->
@@ -78,10 +82,10 @@ function byttVisning()
 <div id="bakgrunn">
 </div>
 <script type="text/javascript">
-$(window).load(function() {
-      $('#slider').nivoSlider({effect:'fade', pauseOnHover:false, controlNav:false,pauseTime:8000, prevText: '<-', nextText: '->', afterLoad: 
+$j(window).load(function() {
+      $j('#slider').nivoSlider({effect:'fade', pauseOnHover:false, controlNav:false,pauseTime:8000, prevText: '<-', nextText: '->', afterLoad: 
 	function() {
-		$('#bakgrunn').css ("display", "none");
+		$j('#bakgrunn').css ("display", "none");
 	}
 }
 );
