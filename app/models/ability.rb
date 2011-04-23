@@ -15,7 +15,7 @@ class Ability
      can :read, :all
      can :create, Article
      can :manage, Article, :user_id => user.id 
-     can :see_timestamps, User, :user_id => user.id
+     can :update, User, :id => user.id
    else
      can :read, :all
    end

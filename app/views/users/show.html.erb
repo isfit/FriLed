@@ -1,7 +1,47 @@
-<h3><%= @user.name %></h3>
+<title><%= @user.name %></title>
+
+<p id="notice"><%= notice %></p>
+
+<div id="bidragsyter">
+ <%= image_tag @user.avatar.url(:medium) %>
+
+
+<h2>
+  <%= @user.name %>  
+</h2>
+
+<p>
+  <%= raw format(@user.bio) %>
+</p>
+
+<br />
+<p>
+  <b>Tekster:</b>
+    <% @articles = @user.articles.all %>
+    <% @articles = @articles.reverse %>
+    <% @articles.each do |a| %>
+        <p><%=link_to a.title, a %> </p>
+      <% end %>
+
+</p>
+<p>
+<!--  <%= link_to 'Alle bidragsytere', users_path %>-->
+  <% if can? :update, @user %>  
+    <%= link_to 'Endre', edit_registration_path(@user) %>
+  <% end %>
+  <% if can? :delete, @user %>
+    <%= button_to "Slette", { :action => "destroy", :id => @user.id },
+              :confirm => "Are you sure?", :method => :delete %>
+  <% end %>
+</p>
+
  
-<%= link_to_if(can?(:update,@user), "Edit", edit_user_path(@user)) %> |
-<%= link_to_if(can?(:delete, @user), "Delete", user_path(@user), :confirm => "Are you sure?", :method => :delete) {} %>
+
+<br />
+</div>
+
+
+<% if can? :manage, :all %>
  
 <table class="one-column-emphasis">
 	<tbody>
@@ -13,7 +53,6 @@
 			<td class="oce-first">Role:</td>
 			<td><%= @user.roles.first.name %></td>
 		</tr>
-	<% if can?(:see_timestamps,User) %>
 		<tr>
 			<td class="oce-first">Created at:</td>
 			<td><%= @user.created_at %></td>
@@ -26,6 +65,7 @@
 			<td class="oce-first">Sign In Count:</td>
 			<td><%= @user.sign_in_count %></td>
 		</tr>
-	<% end %>
 	</tbody>
 </table>
+
+<% end %>
