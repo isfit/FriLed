@@ -1,12 +1,14 @@
 class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
-  load_and_authorize_resource  
   
+  load_and_authorize_resource  
+ 
+  layout :choose_layout
+ 
   #  before_filter :authenticate_admin!, :except => [:index, :show]
 
   def index
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @articles }
@@ -76,4 +78,16 @@ class ArticlesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private 
+
+  def choose_layout    
+    if ['show', 'new', 'edit'].include? action_name
+      'application_no_sidebar'
+    else
+      'application'
+    end
+  end
+
+
 end

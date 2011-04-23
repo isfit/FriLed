@@ -1,10 +1,87 @@
-<!-- table header stuff here -->
+<title>Bidragsytere</title>
+
+
+<h1>Bidragsytere</h1>
+
+<button type="button" onclick="byttVisning()">Bjarne</button>
+
+<% @users = User.all %>
+<% @users.sort! { |a,b| a.name.downcase <=> b.name.downcase } %>
+
+<% admin = Role.find(1) %>
+<% editor = Role.find(2) %>
+
 <% @users.each do |u| %>
-  <tr>
-    <td><%= link_to_if(can?(:read, User), "#{u.name}", user_path(u.id)) {} %></td>
-    <td><%= "#{u.email}" %></td>
-    <td><%= "#{u.roles.collect{|r| r.name}}" %></td>
-    <td><%= link_to_if(can?(:edit, User), image_tag("/images/edit_icon.gif"), edit_user_path(u.id)) {} %></td>
-    <td><%= link_to_if(can?(:delete, u), image_tag("/images/delete_icon.gif"), u, :confirm => "Are you sure?", :method => :delete) {} %></td>
-  </tr>
+  <% if u.roles.include?(admin) || u.roles.include?(editor) %>
+  <% @users.delete(u) %>
+  <% end %>
 <% end %>
+
+
+<div id="taboloid">
+<% i = 1 %>
+<% @users.each do |user| %>
+
+  <% if i == 1 %>
+    <% classtext ="artikkel grid_9 alpha"%>
+    <% i = 2 %>
+  <% else %>
+    <% classtext = "artikkel grid_9 omega" %>
+    <% i = 1 %>
+  <% end %>
+
+  <% if i != 0 %>
+  <div class="<%=classtext%>">
+      <%= link_to image_tag(user.avatar(:medium), :size => "144x170"), user %>
+      <h1><%=link_to user.name, user %></h1>
+      <%= raw format(truncate(user.bio, :length => 120, :separator => ' '))%>
+   <div id="lesMer"><%= link_to 'Les mer', user %></div>
+   </div>
+   <% end %>
+   <% if i == 0 %>
+     <% i = 1 %>
+   <% end %>
+<% end %>
+</div>
+
+<div id="list">
+<table id="artikkelOversikt">
+
+  <tr>
+    <th></th>
+    <th>Navn</th>
+    <th>Bio</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+
+<% @users.each do |user| %>
+    <tr>
+      <td><%= link_to image_tag(user.avatar(:medium), :size => "70x80"), user %>
+      <td><%= link_to user.name, user %>  </td>
+      <td><%= raw format(truncate(user.bio, :length => 200, :separator => ' '))%>
+      <td>
+        <% if can? :update, @user %>
+        <%= link_to 'Endre', edit_registrations_path(contributor) %>
+        <% end %>
+      </td>
+      <td>
+        <% if can? :destroy, @contributor %>
+          <%= button_to "Slette", { :action => "destroy", :id => user.id },
+              :confirm => "Are you sure?", :method => :delete %>
+
+        <% end %>
+       </td>
+    </tr>
+<% end %>
+
+</table>
+</div>
+
+
+
+<script type="text/javascript">
+  byttVisning();
+</script>
+

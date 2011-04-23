@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
 
+layout "application_no_sidebar"
 
 # GET /pages
   # GET /pages.xml
