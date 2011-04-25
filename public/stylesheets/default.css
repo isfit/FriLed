@@ -85,6 +85,7 @@ body {
 
 #hovedArtikkel h1 {
 	font-size:20px;
+	padding-bottom:2px;
 	
 }
 
@@ -142,8 +143,10 @@ body {
 }
 
 .artikkel h1 {
-	font-size:17px;
-	padding-right: 2px;  
+	font-size:18px;
+	padding-right: 2px; 
+	line-height:1.4;
+	margin-bottom:4px; 
 }
 
 .artikkel h1 a {
@@ -161,7 +164,7 @@ body {
 .artikkel p {
 	color:#333333; 
 	font-size:12px; 
-	margin-bottom:5px;
+	margin-bottom:2px;
 	margin-top:5px;
 	padding-right:5px;
 }
@@ -205,7 +208,10 @@ body {
 
 
 #bidragsyter {
-	margin: 5px 5px 5px 5px;
+	margin-left: 5px;
+	padding: 5px 0px 5px 5px;
+	background-color:#FAFAFA;
+
 }
 
 #bidragsyter img {
@@ -270,11 +276,34 @@ td {
 }
 
 #list {
-	display:none;
+	
 }
 
 #taboloid {
-	display:block;
+	
+}
+
+#listeVisning {
+
+}
+
+#bildeVisning {
+
+}
+
+#contentOmeny {
+	position:relative;
+}
+
+#endreVisning{
+	position:absolute;
+	right: 0;
+	top: 0px;
+}
+
+#bio {
+	margin-bottom:25px;
+	
 }
 
 

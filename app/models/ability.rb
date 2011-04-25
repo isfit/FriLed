@@ -9,12 +9,12 @@ class Ability
      can :see_timestamps, User 
    elsif user.role? :editor
      can :create, Article
-     can :update, Article
+     can :manage, Article
      can :read, :all
    elsif user.role? :contributor
      can :read, :all
      can :create, Article
-     can :manage, Article, :user_id => user.id 
+     can :update, Article, :user_id => user.id 
      can :update, User, :id => user.id
    else
      can :read, :all

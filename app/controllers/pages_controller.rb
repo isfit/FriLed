@@ -47,7 +47,7 @@ layout "application_no_sidebar"
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to(@page, :notice => 'Post was successfully created.') }
+        format.html { redirect_to(@page, :notice => 'Siden ble opprettet.') }
         format.xml  { render :xml => @page, :status => :created, :location => @page }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ layout "application_no_sidebar"
 
     respond_to do |format|
       if @page.update_attributes(params[:article])
-        format.html { redirect_to(@page, :notice => 'Page was successfully updated.') }
+        format.html { redirect_to(@page, :notice => 'Siden ble oppdatert.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

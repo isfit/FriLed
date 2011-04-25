@@ -2,30 +2,34 @@
 
 <p id="notice"><%= notice %></p>
 
-<div id="bidragsyter">
- <%= image_tag @user.avatar.url(:medium) %>
+<div id="visArtikkel">
+<div id="artImg">
+  <%= image_tag(@user.avatar(:medium), :size => "180x220") %>
+</div>
 
+<p>
+  <h2 id="artOverskrift">
+    <%= @user.name %>
+   </h2>
+</p>
 
-<h2>
-  <%= @user.name %>  
-</h2>
-
+<div id="bio">
 <p>
   <%= raw format(@user.bio) %>
 </p>
+</div>
 
-<br />
 <p>
-  <b>Tekster:</b>
+  <b>Tekster</b>
     <% @articles = @user.articles.all %>
     <% @articles = @articles.reverse %>
     <% @articles.each do |a| %>
+      <% if (a.published == true) or (can? :update, @user) %>  
         <p><%=link_to a.title, a %> </p>
       <% end %>
-
+    <% end %>
 </p>
-<p>
-<!--  <%= link_to 'Alle bidragsytere', users_path %>-->
+
   <% if can? :update, @user %>  
     <%= link_to 'Endre', edit_registration_path(@user) %>
   <% end %>
@@ -40,7 +44,6 @@
 <br />
 </div>
 
-
 <% if can? :manage, :all %>
  
 <table class="one-column-emphasis">
@@ -51,7 +54,11 @@
 		</tr>
 		<tr>
 			<td class="oce-first">Role:</td>
-			<td><%= @user.roles.first.name %></td>
+			<td><%= @user.roles.first.name %>
+                        <% if @user.roles.length > 1 %>
+                        , <%= @user.roles.find(1).name %>
+                        <% end %>
+                        </td>   
 		</tr>
 		<tr>
 			<td class="oce-first">Created at:</td>

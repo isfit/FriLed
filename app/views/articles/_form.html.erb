@@ -12,63 +12,44 @@
   <% end %>
   
 
-<!--  
-  <div class="field">
-    <%= f.label :Forfatter%>(Velg ISFiT for video uten klar bidragsyter)<br />
-    <%= select("article", "contributor_id", Contributor.all.collect {|c| [ c.contributor, c.id ] }, {:include_blank => 'None'})%>    
-  </div>
-  Hvis forfatter ikke i listen: <%= link_to 'Ny bidragsyter', new_contributor_path %> <br /><br />i
--->
  
   <div class="field">
-    <%= f.label :Kategori%><br />
+    <%= f.label :kategori%><br />
     <%= select("article", "category_id", Category.all.collect {|d| [ d.name, d.id ] }, {:include_blank => 'None'})%>    
   </div>
-  Hvis kategori ikke i listen: <%= link_to 'Ny kategori', new_category_path %> <br /><br />
+ <!-- Hvis kategori ikke i listen: <%= link_to 'Ny kategori', new_category_path %> <br /><br />-->
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :tittel %><br />
     <%= f.text_field :title %>
   </div><br />
-
+<!--
   Hvis video, legg inn youtube-koden her(11 tegn, både tall og bokstaver, står mot slutten av adressen).
   <div class="field">
  	<%= f.text_field :youtube_link %>
   </div>
   <br />
+-->
   <div class="field">
-    <%= f.label :innhold %>(Hvis film: Skriv kort hva filmen handler om. Syntaks for formatering finnes nederst på siden.) <br />
+    <%= f.label :innhold %>(Syntaks for formatering oppgitt nederst på siden.) <br />
     <%= f.text_area :content, :size => "95x40" %>
   </div>
+ 
+  <% if can? :manage, Article %>
+    <div class="field"> 
+      <%= f.label :publisert %>
+      <%= f.check_box :published %>
+    </div>
+  <% end %>
   
   <div class="actions">
     <%= f.submit %>
   </div>
-
-<p><%= simple_format ("
+  
+   
+<p><%= raw format("
 
 Syntaks for formatering:
 
-# Header 1 #
-## Header 2 ##
-### Header 3 ###             (Hashes on right are optional)
-#### Header 4 ####
-##### Header 5 #####
-
-
-This is a paragraph, which is text surrounded by whitespace. Paragraphs can be on one 
-line (or many), and can drone on for hours.  
-
-Here is a Markdown link to [Warped](http://warpedvisions.org), and a literal . 
-Now some SimpleLinks, like one to [google] (automagically links to are-you-
-feeling-lucky), a [wiki: test] link to a Wikipedia page, and a link to 
-[foldoc: CPU]s at foldoc.  
-
-Now some inline markup like _italics_,  **bold**, and `code()`. Note that underscores in 
-words are ignored in Markdown Extra.
-
-
-> Blockquotes are like quoted text in email replies
->> And, they can be nested
 
 * Bullet lists are easy too
 - Another one
@@ -76,7 +57,27 @@ words are ignored in Markdown Extra.
 
 1. A numbered list
 2. Which is numbered
-3. With periods and a space") %> 
+3. With periods and a space
+
+
+# Overskrift 1 
+## Overskrift 2 
+### Overskrift 3  
+#### Overskrift 4 
+##### Overskrift 5 
+
+Fet skrift: **Denne teksten er fet**
+
+Skrå skrift:  _Denne teksten er skrå_
+
+Her er en link til [ISFiT](http://www.isfit.org). 
+
+> Blockquotes are like quoted text in email replies
+>> And, they can be nested
+
+
+") %> 
+
 </p>
 
 

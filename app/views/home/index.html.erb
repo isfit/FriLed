@@ -1,15 +1,27 @@
 <title>Frivillig Ledelse</title>
 
-
+<div id="contentOmeny">
+ 
 <h2>Siste</h2>
 
-<button type="button" onclick="byttVisning()">Bjarne</button>
+<% if can? :manage, Article %>
+  <div id="bildeVisning">
+    <button id="endreVisning" type="button" onclick="byttVisning()">Bildevisning</button>
+  </div>
+
+  <div id="listeVisning" >
+    <button id="endreVisning" type="button" onclick="byttVisning()">Listevisning</button>
+  </div>
+<% end %>
+</div>
+
 
 <div id="taboloid">
 <% @articles = Article.all %>
 <% @articles = @articles.reverse %>
 <% i = 0 %>
 <% @articles.first(9).each do |article| %>
+  <% if article.published == true %>
   <% if i == 0 %>
     <div id="hovedArtikkel" class="grid_18 alpha">
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
@@ -57,7 +69,9 @@
    <% if i == 0 %>
      <% i = 1 %>
    <% end %>
+  <% end %>
 <% end %>
+
 </div>
 
 
@@ -69,10 +83,13 @@
     <th>Tittel</th>
     <th>Av</th>
     <th>Kategori</th>
+    <% if can? :manage, Article %>
+      <th>Publisert</th>
+    <% end %>
   </tr>
 
 
-<% @articles.first(9).each do |article| %>
+<% @articles.each do |article| %>
     <tr>
       <% if article.youtube_link.nil?  || article.youtube_link == "" %>
         <td><%= link_to image_tag(article.user.avatar(:medium), :size => "70x80"), article %>
@@ -82,6 +99,9 @@
       <td><%= link_to article.title, article %>  </td>
       <td><i><%=  link_to article.user.name, article.user%></i> </td>
       <td><%= link_to article.category.name, article.category %></td>
+      <% if can? :manage, Article %>
+        <td><%= article.published.to_s %></td>
+      <% end %>
     </tr>
 <% end %>
 

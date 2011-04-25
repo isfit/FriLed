@@ -42,9 +42,10 @@ class ArticlesController < ApplicationController
   # POST /articles.xml
   def create
     @article.user = current_user
+    @article.published = false
     respond_to do |format|
       if @article.save
-        format.html { redirect_to(@article, :notice => 'Article was successfully created.') }
+        format.html { redirect_to(@article, :notice => 'Teksten ble opprettet. Den vil bli publisert så snart den blir godkjent av en moderator.') }
         format.xml  { render :xml => @article, :status => :created, :location => @article }
       else
         format.html { render :action => "new" }
@@ -59,7 +60,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.update_attributes(params[:article])
-        format.html { redirect_to(@article, :notice => 'Article was successfully updated.') }
+        format.html { redirect_to(@article, :notice => 'Teksten ble endret.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

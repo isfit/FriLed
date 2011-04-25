@@ -2,12 +2,21 @@
 
 <p id="notice"><%= notice %></p>
 
+<div id="contentOmeny">
+
 <h2>
   <%= @category.name %>
 </h2>
 
-<button type="button" onclick="byttVisning()">Bjarne</button>
+<div id="bildeVisning">
+  <button id="endreVisning" type="button" onclick="byttVisning()">Bildevisning</button>
+</div>
 
+<div id="listeVisning" >
+  <button id="endreVisning" type="button" onclick="byttVisning()">Listevisning</button>
+</div>
+
+</div>
 
 <!-- Husk å fjerne .first(7) ved kopiering -->
 

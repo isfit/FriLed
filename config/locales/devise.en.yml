@@ -1,39 +1,39 @@
 en:
   errors:
     messages:
-      not_found: "not found"
-      already_confirmed: "was already confirmed"
-      not_locked: "was not locked"
+      not_found: "ikke funnet"
+      already_confirmed: "var allerede bekrefet"
+      not_locked: "var ikke låst"
 
   devise:
     failure:
-      unauthenticated: 'You need to sign in or sign up before continuing.'
-      unconfirmed: 'You have to confirm your account before continuing.'
-      locked: 'Your account is locked.'
-      invalid: 'Invalid email or password.'
+      unauthenticated: 'Du må logge inn eller registrere deg før du kan fortsette.'
+      unconfirmed: 'Du må bekrefte kontoen din før du kan fortsette.'
+      locked: 'Din konto er låst.'
+      invalid: 'Ugyldig email eller passord.'
       invalid_token: 'Invalid authentication token.'
-      timeout: 'Your session expired, please sign in again to continue.'
-      inactive: 'Your account was not activated yet.'
+      timeout: 'Timeout. Logg inn igjen.'
+      inactive: 'Din konto var ikke aktiviert enda.'
     sessions:
-      signed_in: 'Signed in successfully.'
-      signed_out: 'Signed out successfully.'
+      signed_in: 'Du er nå logget inn.'
+      signed_out: 'Du er nå logget ut.'
     passwords:
-      send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
-      updated: 'Your password was changed successfully. You are now signed in.'
+      send_instructions: 'Du vil motta en e-post med instruksjoner om endring av passord innen et par minutt.'
+      updated: 'Passordet ditt ble endret. Du er nå logget inn.'
     confirmations:
-      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      send_instructions: 'Du vil motta en e-post med instruksjoner om hvordan du kan bekrefte kontoen din i løpet av et par minutt.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
-      signed_up: 'You have signed up successfully. If enabled, a confirmation was sent to your e-mail.'
-      updated: 'You updated your account successfully.'
-      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      signed_up: 'Registeringen var vellykket. En bekreftelse har blitt sendt til din email-adresse.'
+      updated: 'Kontoen ble oppdatert.'
+      destroyed: 'Kontoen din er nå slettet. Ha det bra!'
     unlocks:
-      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
-      unlocked: 'Your account was successfully unlocked. You are now signed in.'
+      send_instructions: 'Du vil motta en e-post med instruksjon om hvordan du kan låse opp kontoen din i løpet av et par minutt.'
+      unlocked: 'Opplåsingen var vellykket. Du er nå logget inn.'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: 'Bekreftelse av konto'
       reset_password_instructions:
-        subject: 'Reset password instructions'
+        subject: 'Instruksjoner for å endre passord'
       unlock_instructions:
-        subject: 'Unlock Instructions'
+        subject: 'Instruksjoner for å låse opp konto'

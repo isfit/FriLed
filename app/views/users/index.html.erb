@@ -8,15 +8,17 @@
 <% @users = User.all %>
 <% @users.sort! { |a,b| a.name.downcase <=> b.name.downcase } %>
 
-<% admin = Role.find(1) %>
-<% editor = Role.find(2) %>
 
-<% @users.each do |u| %>
-  <% if u.roles.include?(admin) || u.roles.include?(editor) %>
-  <% @users.delete(u) %>
+<% if cannot? :manage, User %>
+  <% admin = Role.find(1) %>
+  <% editor = Role.find(2) %>
+
+  <% @users.each do |u| %>
+    <% if u.roles.include?(admin) || u.roles.include?(editor) %>
+    <% @users.delete(u) %>
+    <% end %>
   <% end %>
 <% end %>
-
 
 <div id="taboloid">
 <% i = 1 %>
@@ -63,7 +65,7 @@
       <td><%= raw format(truncate(user.bio, :length => 200, :separator => ' '))%>
       <td>
         <% if can? :update, @user %>
-        <%= link_to 'Endre', edit_registrations_path(contributor) %>
+        <%= link_to 'Endre', edit_registration_path(user) %>
         <% end %>
       </td>
       <td>

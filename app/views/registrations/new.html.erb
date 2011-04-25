@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<h2>Registrer deg</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :multipart => true }) do |f| %>
   <%= devise_error_messages! %>
@@ -7,25 +7,25 @@
   <%= f.text_field :name %></p>
 
 
-  <p><%= f.label :email %><br />
+  <p><%= f.label :epost %><br />
   <%= f.text_field :email %></p>
 
-  <p><%= f.label :biography %><br />
+  <p><%= f.label :kort_om_deg %><br />
   <%= f.text_area :bio %></p>
   
   <p> <%= f.label :last_opp_bilde %><br />
   <%= f.file_field :avatar %></p>
 
  
-  <p><%= f.label :password %><br />
+  <p><%= f.label :passord %><br />
   <%= f.password_field :password %></p>
 
-  <p><%= f.label :password_confirmation %><br />
+  <p><%= f.label :bekreft_passord %><br />
   <%= f.password_field :password_confirmation %></p>
  
 
   <%= recaptcha_tags %>
-  <p><%= f.submit "Sign up" %></p>
+  <p><%= f.submit "Registrer deg" %></p>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
