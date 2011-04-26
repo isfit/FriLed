@@ -275,9 +275,51 @@ td {
 	margin-top:80px;
 }
 
-#list {
+
+#list dl {
+	margin-top:5px;
+}
+
+#list dt {
+	font-weight:bold;
+	font-size: 16px;
+	float:right;
+	width: 612px;
+}
+
+#list dt a {
+	color:#3B5998;
+}
+
+#list dd.content {
+	margin: 0 0 15px 98px;
+	width:610px;
+}
+
+
+
+#list dd.listImg {
+	float:left;
+	margin: 0;
+	padding-left: 5px;
 	
 }
+
+#whiteBG {
+	background-color:white;
+	height: 111px;
+	padding: 5px 0 0px 0;
+	margin: 5px 0 5px 0;
+} 
+
+#greyBG {
+	background-color:#D9D9D9;
+	height: 111px;
+	padding: 5px 0 0px 0;
+	margin: 5px 0 5px 0;
+}
+
+
 
 #taboloid {
 	

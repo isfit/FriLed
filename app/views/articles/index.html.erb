@@ -1,8 +1,10 @@
 <title>Alle tekster</title>
 
-<div id="contentOmeny">
 
 <h2>Alle tekster</h2>
+
+<!--
+<div id="contentOmeny">
 
 <div id="bildeVisning">
   <button id="endreVisning" type="button" onclick="byttVisning()">Bildevisning</button>
@@ -68,7 +70,42 @@
    <% end %>
 <% end %>
 </div>
+-->
 
+<div id="list">
+<dl id="artikkelOversikt">
+<% i = 0 %>
+<% @articles.each do |article| %>
+      <% if i == 0 %>
+        <div id="whiteBG">
+      <% else %>
+        <div id="greyBG">
+      <% end %>
+      <dt><%= link_to article.title, article %>  </dt>
+      <% if article.youtube_link.nil?  || article.youtube_link == "" %>
+        <dd class="listImg"><%= link_to image_tag(article.user.avatar(:medium), :size => "85x101"), article %></dd>
+      <% else %>
+        <dd class="listImg"> <iframe title="YouTube video player" width="70" height="70" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></dd>
+      <% end %>
+      
+      <dd class="content"><%= raw format(truncate(article.content, :length => 150, :separator => ' '))%>Av: <%=  link_to article.user.name, article.user%> Kategori: <%= link_to article.category.name, article.category %></dd>     
+     
+     <% if i == 0 %>
+       </div>
+       <% i = 1 %>
+     <% else %>
+       </div>
+       <% i = 0 %>
+     <% end %>
+     
+<% end %>
+
+</dl>
+</div>
+
+
+
+<!--
 <div id="list">
 <table id="artikkelOversikt">
     
@@ -80,40 +117,13 @@
     <th></th>
     <th></th>
   </tr>
+-->
 
-
-<% @articles.each do |article| %>
-    <tr>
-      <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-        <td><%= link_to image_tag(article.user.avatar(:medium), :size => "70x80"), article %>
-      <% else %>
-        <td> <iframe title="YouTube video player" width="70" height="70" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></td>
-      <% end %>
-      <td><%= link_to article.title, article %>  </td>
-      <td><i><%=  link_to article.user.name, article.user%></i> </td>
-      <td><%= link_to article.category.name, article.category %></td> 
-      <td>
-        <% if can? :update, @article %>
-        <%= link_to 'Endre', edit_article_path(article) %>
-        <% end %>
-      </td>
-      <td>
-        <% if can? :destroy, @article %>
-          <%= button_to "Slette", { :action => "destroy", :id => article.id },
-              :confirm => "Are you sure?", :method => :delete %>
-
-        <% end %>
-       </td>
-    </tr>
-<% end %>
-
-</table>
-</div>
-
+<!--
 <script type="text/javascript">
   byttVisning();
 </script>
-
+-->
 <br />
 
 <% if can? :create, @article %>
