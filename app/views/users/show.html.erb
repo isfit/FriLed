@@ -31,7 +31,8 @@
 </p>
 
   <% if can? :update, @user %>  
-    <%= link_to 'Endre', edit_registration_path(@user) %>
+    <% # link_to 'Endre', edit_registration_path(@user) %>
+    <%= button_to 'Endre', edit_user_registration_path(@user), :method => :get %>
   <% end %>
   <% if can? :delete, @user %>
     <%= button_to "Slette", { :action => "destroy", :id => @user.id },

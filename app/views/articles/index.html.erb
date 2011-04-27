@@ -25,7 +25,8 @@
 
 <% i = 0 %>
 <% @articles.each do |article| %>
-  <% if i == 0 %>
+ <% if article.published == true %>
+   <% if i == 0 %>
     <div id="hovedArtikkel" class="grid_18 alpha">
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
     <%= link_to image_tag(article.user.avatar(:medium)), article %>
@@ -68,6 +69,7 @@
    <% if i == 0 %>
      <% i = 1 %>
    <% end %>
+ <% end %>
 <% end %>
 </div>
 -->
@@ -76,7 +78,8 @@
 <dl id="artikkelOversikt">
 <% i = 0 %>
 <% @articles.each do |article| %>
-      <% if i == 0 %>
+ <% if article.published == true %>   
+   <% if i == 0 %>
         <div id="whiteBG">
       <% else %>
         <div id="greyBG">
@@ -97,7 +100,7 @@
        </div>
        <% i = 0 %>
      <% end %>
-     
+   <% end %>  
 <% end %>
 
 </dl>

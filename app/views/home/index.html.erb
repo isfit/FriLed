@@ -58,9 +58,9 @@
     <% if article.youtube_link.nil?  || article.youtube_link == "" %> 
     <h3><%= link_to article.user.name, article.user %></h3>
     <% if article.title.length < 30 %>
-      <%= simple_format(truncate(article.content, :length => 130, :separator => ' '))%>
+      <%= raw format(truncate(article.content, :length => 125, :separator => ' '))%>
     <% else %>
-      <%= simple_format(truncate(article.content, :length => 100, :separator => ' '))%>
+      <%= raw format(truncate(article.content, :length => 100, :separator => ' '))%>
     <% end %> 
    <div id="lesMer"><%= link_to 'Les mer', article %></div>
    <% end %>

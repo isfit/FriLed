@@ -1,9 +1,19 @@
 <title>Bidragsytere</title>
 
+<div id="contentOmeny">
 
-<h1>Bidragsytere</h1>
+<h2>Bidragsytere</h2>
 
-<button type="button" onclick="byttVisning()">Bjarne</button>
+<div id="bildeVisning">
+  <button id="endreVisning" type="button" onclick="byttVisning()">Bildevisning</button>
+</div>
+
+<div id="listeVisning" >
+  <button id="endreVisning" type="button" onclick="byttVisning()">Listevisning</button>
+</div>
+
+</div>
+
 
 <% @users = User.all %>
 <% @users.sort! { |a,b| a.name.downcase <=> b.name.downcase } %>
@@ -36,7 +46,7 @@
   <div class="<%=classtext%>">
       <%= link_to image_tag(user.avatar(:medium), :size => "144x170"), user %>
       <h1><%=link_to user.name, user %></h1>
-      <%= raw format(truncate(user.bio, :length => 120, :separator => ' '))%>
+      <%= raw format(truncate(user.bio, :length => 170, :separator => ' '))%>
    <div id="lesMer"><%= link_to 'Les mer', user %></div>
    </div>
    <% end %>
@@ -47,40 +57,36 @@
 </div>
 
 <div id="list">
-<table id="artikkelOversikt">
-
-  <tr>
-    <th></th>
-    <th>Navn</th>
-    <th>Bio</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-
+<dl id="artikkelOversikt">
+<% i = 0 %>
 <% @users.each do |user| %>
-    <tr>
-      <td><%= link_to image_tag(user.avatar(:medium), :size => "70x80"), user %>
-      <td><%= link_to user.name, user %>  </td>
-      <td><%= raw format(truncate(user.bio, :length => 200, :separator => ' '))%>
-      <td>
-        <% if can? :update, @user %>
-        <%= link_to 'Endre', edit_registration_path(user) %>
-        <% end %>
-      </td>
-      <td>
-        <% if can? :destroy, @contributor %>
-          <%= button_to "Slette", { :action => "destroy", :id => user.id },
-              :confirm => "Are you sure?", :method => :delete %>
+      <% if i == 0 %>
+        <div id="whiteBG">
+      <% else %>
+        <div id="greyBG">
+      <% end %>
+      <dt><%= link_to user.name, user %>  </dt>
+        <dd class="listImg"><%= link_to image_tag(user.avatar(:medium), :size => "85x101"), user  %></dd>
 
-        <% end %>
-       </td>
-    </tr>
+      <dd class="content"><%= raw format(truncate(user.bio, :length => 150, :separator => ' '))%>Tekster: <% @articles = user.articles.all %>
+    <% @articles = @articles.reverse %>
+    <% @articles.each do |a| %>
+      <% if (a.published == true) or (can? :update, user) %> 
+        <%=link_to a.title, a %>  
+      <% end %>
+    <% end %></dd>
+
+     <% if i == 0 %>
+       </div>
+       <% i = 1 %>
+     <% else %>
+       </div>
+       <% i = 0 %>
+     <% end %>
 <% end %>
 
-</table>
+</dl>
 </div>
-
 
 
 <script type="text/javascript">

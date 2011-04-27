@@ -27,6 +27,7 @@
 <div id="taboloid">
 <% i = 0 %>
 <% @articles.each do |article| %>
+ <% if article.published == true %>
   <% if i == 0 %>
     <div id="hovedArtikkel" class="grid_18 alpha">
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
@@ -62,7 +63,12 @@
     <% end %>
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
     <h3><%= link_to article.user.name, article.user %></h3>
-    <%= raw format(truncate(article.content, :length => 120, :separator => ' '))%>
+    <% if article.title.length < 30 %>
+      <%= raw format(truncate(article.content, :length => 125, :separator => ' '))%>
+    <% else %>
+      <%= raw format(truncate(article.content, :length => 100, :separator => ' '))%>
+    <% end %>
+
    <div id="lesMer"><%= link_to 'Les mer', article %></div>
    <% end %>
    </div>
@@ -70,6 +76,7 @@
    <% if i == 0 %>
      <% i = 1 %>
    <% end %>
+ <% end %>
 <% end %>
 </div>
 
@@ -77,6 +84,7 @@
 <dl id="artikkelOversikt">
 <% i = 0 %>
 <% @articles.each do |article| %>
+   <% if article.published == true %>  
       <% if i == 0 %>
         <div id="whiteBG">
       <% else %>
@@ -98,7 +106,7 @@
        </div>
        <% i = 0 %>
      <% end %>
-
+  <% end %>
 <% end %>
 
 </dl>

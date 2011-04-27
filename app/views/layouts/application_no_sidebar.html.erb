@@ -58,7 +58,7 @@ function byttVisning()
     <% end %>
     <% if user_signed_in? %>
       <%= link_to 'Logg ut', destroy_user_session_path %> 
-      <%= link_to 'Endre profil', edit_user_registration_path %>
+      <%= link_to 'Min profil', current_user %>
       <%= link_to 'Ny tekst', new_article_path %>
      <% end %>
   </div><!-- Slutt ofaner -->
