@@ -14,6 +14,10 @@ gem 'authlogic'
 gem 'cancan'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'mysql2'
+gem 'formatize'
+gem 'mail'
+gem 'markdownizer'
+gem 'rdiscount'
 
 
 group :development do

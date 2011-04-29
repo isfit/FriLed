@@ -13,7 +13,7 @@ en:
       invalid: 'Ugyldig email eller passord.'
       invalid_token: 'Invalid authentication token.'
       timeout: 'Timeout. Logg inn igjen.'
-      inactive: 'Din konto var ikke aktiviert enda.'
+      inactive: 'Din konto var ikke aktivert enda.'
     sessions:
       signed_in: 'Du er nå logget inn.'
       signed_out: 'Du er nå logget ut.'
@@ -24,7 +24,7 @@ en:
       send_instructions: 'Du vil motta en e-post med instruksjoner om hvordan du kan bekrefte kontoen din i løpet av et par minutt.'
       confirmed: 'Your account was successfully confirmed. You are now signed in.'
     registrations:
-      signed_up: 'Registeringen var vellykket. En bekreftelse har blitt sendt til din email-adresse.'
+      signed_up: 'Registeringen var vellykket.'
       updated: 'Kontoen ble oppdatert.'
       destroyed: 'Kontoen din er nå slettet. Ha det bra!'
     unlocks:

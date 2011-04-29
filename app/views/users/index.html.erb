@@ -24,10 +24,18 @@
   <% editor = Role.find(2) %>
 
   <% @users.each do |u| %>
-    <% if u.roles.include?(admin) || u.roles.include?(editor) %>
-    <% @users.delete(u) %>
+    <% if u.roles.include?(admin) or u.roles.include?(editor) %>
+      <% @users.delete(u) %>
     <% end %>
   <% end %>
+<% end %>
+
+<% @users.each do |u| %>
+ <% if cannot? :update, u %> 
+   <% if u.articles.all[0].published == false %>
+       <% @users.delete(u) %> 
+    <% end %>
+ <% end %>  
 <% end %>
 
 <div id="taboloid">

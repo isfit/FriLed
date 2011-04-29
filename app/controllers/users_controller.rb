@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   before_filter :accessible_roles, :only => [:new, :edit, :show, :update, :create]
   load_and_authorize_resource :only => [:show,:new,:destroy,:edit,:update]
  
+
+
+#  UserMailer.registration_confirmation(@user).deliver
+
+
+
   # GET /users
   # GET /users.xml                                                
   # GET /users.json                                       HTML and AJAX

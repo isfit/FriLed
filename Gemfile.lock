@@ -1,6 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    RedCloth (4.2.7)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -41,12 +42,17 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
+    coderay (0.9.7)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 1.0.2)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    formatize (1.0.1)
+      RedCloth (~> 4.2)
+      actionpack (~> 3.0)
+      bluecloth (~> 2.0)
     highline (1.6.1)
     i18n (0.5.0)
     mail (2.2.13)
@@ -54,6 +60,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    markdownizer (0.3.6)
+      activerecord (>= 3.0.3)
+      coderay
+      rdiscount
     mime-types (1.16)
     mysql2 (0.2.6)
     net-scp (1.0.4)
@@ -87,6 +97,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    rdiscount (1.6.8)
     recaptcha (0.3.1)
     rspec (2.5.0)
       rspec-core (~> 2.5.0)
@@ -119,10 +130,14 @@ DEPENDENCIES
   cancan
   capistrano
   devise
+  formatize
+  mail
+  markdownizer
   mysql2
   nifty-generators
   paperclip
   rails (= 3.0.3)
+  rdiscount
   recaptcha
   rspec-rails
   sqlite3-ruby

@@ -43,15 +43,13 @@
   
   <div class="actions">
     <% # f.submit %>
-    <input id="article_submit" type="submit" value="Opprett tekst" name="commit">
+    <input id="article_submit" type="submit" value="Lagre tekst" name="commit">
   </div>
   
    
 <p><%= simple_format("
 
 Syntaks for formatering:
-
-
 
 # Overskrift 1 
 ## Overskrift 2 
@@ -61,27 +59,15 @@ Syntaks for formatering:
 
 Fet skrift: **Denne teksten er fet**
 
-Skrå skrift:  _Denne teksten er skrå_
+Kursiv skrift:  _Denne teksten er kursiv_
 
 Her er en link til [ISFiT](http://www.isfit.org). 
 
-
-* Bullet lists are easy too
-- Another one
-+ Another one
-
-1. A numbered list
-2. Which is numbered
-3. With periods and a space
+*  Første punkt i en punktliste 
+*  Et punkt til
+*  Enda et punkt
 
 
-> Blockquotes are like quoted text in email replies
->> And, they can be nested
-
-
-") %> 
-
+") %>
 </p>
-
-
 <% end %>
