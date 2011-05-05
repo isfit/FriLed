@@ -1,11 +1,11 @@
 class PagesController < ApplicationController
 
+load_and_authorize_resource
 layout "application_no_sidebar"
 
 # GET /pages
   # GET /pages.xml
   def index
-    @pages = Page.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,6 @@ layout "application_no_sidebar"
   # GET /pages/1
   # GET /pages/1.xml
   def show
-    @page = Page.find(params[:id])
     
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +26,6 @@ layout "application_no_sidebar"
 # GET /pages/new
   # GET /pages/new.xml
   def new
-    @page = Page.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,13 +35,11 @@ layout "application_no_sidebar"
 
   # GET /page/1/edit
   def edit
-    @page = Page.find(params[:id])
   end
 
   # POST /pages
   # POST /pages.xml
   def create
-    @page = Page.new(params[:page])
 
     respond_to do |format|
       if @page.save
@@ -59,7 +55,6 @@ layout "application_no_sidebar"
   # PUT /pages/1
   # PUT /pages/1.xml
   def update
-    @page = Page.find(params[:id])
 
     respond_to do |format|
       if @page.update_attributes(params[:article])
@@ -74,7 +69,6 @@ layout "application_no_sidebar"
 # DELETE /pages/1
   # DELETE /pages/1.xml
   def destroy
-    @page = Page.find(params[:id])
     @page.destroy
 
     respond_to do |format|

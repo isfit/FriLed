@@ -1,11 +1,17 @@
 <title><%= @page.title %></title>
 
-<div id="bidragsyter">
-<%= image_tag @page.avatar.url(:medium) %>
+<p id="notice"><%= notice %></p>
 
+<div id="visArtikkel">
+<div id="artImg">
+  <%= image_tag @page.avatar.url(:medium) %>
+</div>
+
+<p>
 <h2><%= @page.title %></h2>
+</p>
 
-<p><%= simple_format(@page.content) %></p>
+<p><%= raw format(@page.content) %></p>
 </div>
 
 
@@ -18,3 +24,4 @@
 <% if can? :edit, @page %>
   <%= link_to 'Edit', edit_page_path(@page) %>
 <% end %>
+</div>

@@ -32,10 +32,14 @@
 
 <% @users.each do |u| %>
  <% if cannot? :update, u %> 
-   <% if u.articles.all[0].published == false %>
-       <% @users.delete(u) %> 
-    <% end %>
- <% end %>  
+   <% if u.articles.all.empty? == true %>
+     <% @users.delete(u) %> 
+   <% else %>
+     <% if u.articles.all[0].published == false %>
+       <% @users.delete(u) %>
+     <% end %>
+   <% end %> 
+ <% end %> 
 <% end %>
 
 <div id="taboloid">
