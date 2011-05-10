@@ -12,7 +12,7 @@
 </p>
 
 <p><%= raw format(@page.content) %></p>
-</div>
+
 
 
 <% if can? :destroy, @page %>
@@ -21,7 +21,7 @@
 |
 <% end %>
 
-<% if can? :edit, @page %>
-  <%= link_to 'Edit', edit_page_path(@page) %>
+<% if can? :update, @page %>
+  <%= link_to 'Endre', edit_page_path(@page) %>
 <% end %>
 </div>

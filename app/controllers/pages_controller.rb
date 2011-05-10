@@ -57,7 +57,7 @@ layout "application_no_sidebar"
   def update
 
     respond_to do |format|
-      if @page.update_attributes(params[:article])
+      if @page.update_attributes(params[:page])
         format.html { redirect_to(@page, :notice => 'Siden ble oppdatert.') }
         format.xml  { head :ok }
       else

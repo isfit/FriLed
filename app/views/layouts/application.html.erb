@@ -44,12 +44,12 @@ function byttVisning()
   <div id="omeny" class="grid_25"> <!-- Start Header -->
   <div id="ofaner">  
   <div id="bid">
+   <%= link_to 'Bidragsytere ', users_path %>
     
       <% @pages = Page.all %>
       <% @pages.each do |p| %>
         <%= link_to p.title, page_path(p) %>
       <% end %>
-   <%= link_to 'Bidragsytere', users_path %>
    </div>
     <% if !user_signed_in? %>
     
