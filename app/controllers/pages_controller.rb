@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
 load_and_authorize_resource
-layout "application_no_sidebar"
+layout "application"
 
 # GET /pages
   # GET /pages.xml
