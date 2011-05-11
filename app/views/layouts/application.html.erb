@@ -130,42 +130,8 @@ $j(window).load(function() {
   <%= yield %>
 </div><!-- Slutt midtramme -->
 <div id="hoyreramme" class="grid_6">
-<div id="twitter">
-        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
-        <script>
-          new TWTR.Widget({
-            version: 2,
-            type: 'search',
-            search: '@isfit',
-            interval: 8000,
-            title: '',
-            subject: 'ISFiT på twitter',
-            width: 'auto',
-            height: 0,
-            theme: {
-              shell: {
-                background: '#8ec1da',
-                color: '250'
-              },
-              tweets: {
-                background: '',
-                color: 'blue',
-                links: 'black'
-              }
-            },
-            features: {
-              scrollbar: false,
-              loop: true,
-              live: true,
-              hashtags: true,
-              timestamp: true,
-              avatars: true,
-              toptweets: true,
-              behavior: 'default'
-            }
-          }).render().start();
-        </script>
-</div>
+
+
 
 <div id="twitter">
         <script src="http://widgets.twimg.com/j/2/widget.js"></script>
@@ -204,6 +170,7 @@ $j(window).load(function() {
         </script>
       </div>
 
+<div id="twitter"> 
 <script src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
 new TWTR.Widget({
@@ -235,6 +202,44 @@ new TWTR.Widget({
   }
 }).render().setUser('UKA').start();
 </script>
+</div>
+
+<div id="twitter">
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+          new TWTR.Widget({
+            version: 2,
+            type: 'search',
+            search: '@isfit',
+            interval: 8000,
+            title: '',
+            subject: 'ISFiT på twitter',
+            width: 'auto',
+            height: 0,
+            theme: {
+              shell: {
+                background: '#8ec1da',
+                color: '250'
+              },
+              tweets: {
+                background: '',
+                color: 'blue',
+                links: 'black'
+              }
+            },
+            features: {
+              scrollbar: false,
+              loop: true,
+              live: true,
+              hashtags: true,
+              timestamp: true,
+              avatars: true,
+              toptweets: true,
+              behavior: 'default'
+            }
+          }).render().start();
+        </script>
+      </div>
 
  
 </div><!-- Slutt hoyreramme -->
