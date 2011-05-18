@@ -170,40 +170,42 @@ $j(window).load(function() {
         </script>
       </div>
 
-<div id="twitter"> 
-<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-<script>
-new TWTR.Widget({
-  version: 2,
-  type: 'profile',
-  rpp: 4,
-  interval: 6000,
-  width: 230,
-  height: 300,
-  theme: {
-    shell: {
-      background: '#8ec1da',
-      color: '#250'
-    },
-    tweets: {
-      background: '',
-      color: 'blue',
-      links: 'black'
-    }
-  },
-  features: {
-    scrollbar: false,
-    loop: false,
-    live: true,
-    hashtags: true,
-    timestamp: true,
-    avatars: false,
-    behavior: 'default'
-  }
-}).render().setUser('UKA').start();
-</script>
+<div id="twitter">
+        <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+        <script>
+          new TWTR.Widget({
+            version: 2,
+            type: 'search',
+            search: 'uka11',
+            interval: 8000,
+            title: '',
+            subject: 'UKA på twitter',
+            width: 'auto',
+            height: 0,
+            theme: {
+              shell: {
+                background: '#8ec1da',
+                color: '250'
+              },
+              tweets: {
+                background: '',
+                color: 'blue',
+                links: 'black'
+              }
+            },
+            features: {
+              scrollbar: false,
+              loop: true,
+              live: true,
+              hashtags: true,
+              timestamp: true,
+              avatars: true,
+              toptweets: true,
+              behavior: 'default'
+            }
+          }).render().start();
+        </script>
 </div>
-
 <div id="twitter">
         <script src="http://widgets.twimg.com/j/2/widget.js"></script>
         <script>
