@@ -1,6 +1,5 @@
 body {
-
-	font: 14px 'Georgia','Arial','Geneva', 'sans-serif';
+	font: 14px 'Georgia','Arial','Geneva', sans-serif;
 	color:#333;
 	line-height:1.5;
 
@@ -18,6 +17,15 @@ a:hover {
 	
 }
 
+#umeny a{
+	font: 14.8px Georgia, serif;	
+
+}
+
+#omeny {
+	font: 14.8px Georgia, serif !important;
+}
+
 #omeny h2 {
 	font-family:  'Georgia', 'Franchise' ;
 	padding-left:290px;
@@ -31,7 +39,7 @@ a:hover {
 
 #omeny a{
 	padding: 0 5px 0 5px;
-	margin-top:7px;
+	margin-top:9px;
 	color:white;
 	text-decoration: none;
 	float:right;

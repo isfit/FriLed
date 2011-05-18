@@ -25,7 +25,14 @@
   <% if i == 0 %>
     <div id="hovedArtikkel" class="grid_18 alpha">
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
+     <% if article.user.avatar.file? %>
     <%= link_to image_tag(article.user.avatar(:medium)), article %>
+ 
+<% else %>
+        <%= link_to image_tag("siluett.jpg", :size => "255x300"), article %>
+   
+<% end %>
+
     <% else %>
     <div style="float:left;padding-right:7px;">   <iframe title="YouTube video player" width="250" height="218" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
     <% end %>
@@ -49,7 +56,13 @@
   <% if i != 0 %>
   <div class="<%=classtext%>">
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-      <%= link_to image_tag(article.user.avatar(:medium), :size => "144x170"), article %>
+      <% if article.user.avatar.file? %>
+        <%= link_to image_tag(article.user.avatar(:medium), :size => "144x170"), article %>
+
+<% else %>
+        <%= link_to image_tag("siluett.jpg", :size => "144x170"), article %>
+  
+<% end %>
       <h1><%=link_to article.title, article%></h1>
     <% else %>
       <h1><%=link_to article.title, article%></h1>

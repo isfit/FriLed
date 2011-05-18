@@ -3,76 +3,9 @@
 
 <h2>Alle tekster</h2>
 
-<!--
-<div id="contentOmeny">
 
-<div id="bildeVisning">
-  <button id="endreVisning" type="button" onclick="byttVisning()">Bildevisning</button>
-</div>
-
-<div id="listeVisning" >
-  <button id="endreVisning" type="button" onclick="byttVisning()">Listevisning</button>
-</div>
-
-</div>
-
-
-<!-- Husk å fjerne .first(7) ved kopiering -->
-
-<div id="taboloid">
 <% @articles = Article.all %>
 <% @articles.sort! { |a,b| a.title.downcase <=> b.title.downcase } %>
-
-<% i = 0 %>
-<% @articles.each do |article| %>
- <% if article.published == true %>
-   <% if i == 0 %>
-    <div id="hovedArtikkel" class="grid_18 alpha">
-    <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-    <%= link_to image_tag(article.user.avatar(:medium)), article %>
-    <% else %>
-    <div style="float:left;padding-right:7px;">   <iframe title="YouTube video player" width="250" height="218" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
-    <% end %>
-    <h1><%=link_to article.title, article%></h1>
-    <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-    <h3><%= link_to article.user.name, article.user %></h3>
-    <% end %>
-    <p><%= raw format(truncate(article.content, :length => 530, :separator => ' '))%></p>
-    <div id="lesMer"><%= link_to 'Les mer', article %></div>
-
-   </div>
-
-  <% elsif i == 1 %>
-    <% classtext ="artikkel grid_9 alpha"%>
-    <% i = 2 %>
-  <% else %>
-    <% classtext = "artikkel grid_9 omega" %>
-    <% i = 1 %>
-  <% end %>
-
-  <% if i != 0 %>
-  <div class="<%=classtext%>">
-    <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-      <%= link_to image_tag(article.user.avatar(:medium), :size => "144x170"), article %>
-      <h1><%=link_to article.title, article%></h1>
-    <% else %>
-      <h1><%=link_to article.title, article%></h1>
-      <div style="padding: 5px 0 0 5px"> <iframe title="YouTube video player" width="250" height="145" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
-    <% end %>
-    <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-    <h3><%= link_to article.user.name, article.user %></h3>
-    <%= raw format(truncate(article.content, :length => 120, :separator => ' '))%>
-   <div id="lesMer"><%= link_to 'Les mer', article %></div>
-   <% end %>
-   </div>
-   <% end %>
-   <% if i == 0 %>
-     <% i = 1 %>
-   <% end %>
- <% end %>
-<% end %>
-</div>
--->
 
 <div id="list">
 <dl id="artikkelOversikt">
@@ -86,7 +19,15 @@
       <% end %>
       <dt><%= link_to article.title, article %>  </dt>
       <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-        <dd class="listImg"><%= link_to image_tag(article.user.avatar(:medium), :size => "85x101"), article %></dd>
+     <% if article.user.avatar.file? %>
+  <dd class="listImg"><%= link_to image_tag(article.user.avatar(:medium), :size => "85x101"), article %></dd>
+ 
+<% else %>
+       <dd class="listImg"> <%= link_to image_tag("siluett.jpg", :size => "85x101"), article %></dd>
+   
+<% end %>
+      
+
       <% else %>
         <dd class="listImg"> <iframe title="YouTube video player" width="70" height="70" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></dd>
       <% end %>

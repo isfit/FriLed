@@ -10,7 +10,7 @@
 
 <p><%= raw format(@page.content) %></p>
 
-
+<p><%= image_tag("styret.jpeg", :size => "371x287") %></p>
 
 <% if can? :destroy, @page %>
   <%= button_to "Slette", { :action => "destroy", :id => @page.id },

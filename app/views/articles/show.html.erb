@@ -5,7 +5,14 @@
 <div id="visArtikkel">
 <div id="artImg"> 
   <% if @article.youtube_link.nil?  || @article.youtube_link == "" %>
+
+<% if @article.user.avatar.file? %>
   <%= image_tag(@article.user.avatar(:medium), :size => "180x220") %>
+
+<% else %>
+
+<% end %>
+
 <% else %>
   <div style="margin-top:15px;" <iframe title="YouTube video player" width="400" height="330" src="http://www.youtube.com/embed/<%= @article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
 <% end %>

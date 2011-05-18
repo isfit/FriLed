@@ -15,7 +15,14 @@
 <% @contributors.each do |contributor| %>
   <% if i == 0 %>
     <div id="hovedArtikkel" class="grid_18 alpha">
+     <% if article.user.avatar.file? %>
       <%= link_to image_tag(contributor.avatar(:medium)), contributor %>
+ 
+<% else %>
+        <%= link_to image_tag("siluett.jpg", :size => "255x300"), contributor %>
+   
+<% end %>
+ 
       <h1><%=link_to contributor.contributor, contributor%></h1>
       <p><%= raw format(truncate(contributor.bio, :length => 600, :separator => ' '))%></p>
     <div id="lesMer"><%= link_to 'Les mer', contributor %></div>
@@ -32,7 +39,14 @@
 
   <% if i != 0 %>
   <div class="<%=classtext%>">
+      <% if article.user.avatar.file? %>
       <%= link_to image_tag(contributor.avatar(:medium), :size => "144x170"), contributor %>
+ 
+<% else %>
+        <%= link_to image_tag("siluett.jpg", :size => "144x170"), contributor %>
+   
+<% end %>
+ 
       <h1><%=link_to contributor.contributor, contributor %></h1>
       <%= raw format(truncate(contributor.bio, :length => 120, :separator => ' '))%>
    <div id="lesMer"><%= link_to 'Les mer', contributor %></div>
@@ -59,7 +73,14 @@
 
 <% @contributors.each do |contributor| %>
     <tr>
+       <% if article.user.avatar.file? %>
       <td><%= link_to image_tag(contributor.avatar(:medium), :size => "70x80"), contributor %>
+ 
+<% else %>
+      <td>  <%= link_to image_tag("siluett.jpg", :size => "70x80"), contributor %></td>
+   
+<% end %>
+
       <td><%= link_to contributor.contributor, contributor %>  </td>
       <td><%= raw format(truncate(contributor.bio, :length => 200, :separator => ' '))%>
       <td>

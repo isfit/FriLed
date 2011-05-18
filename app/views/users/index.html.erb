@@ -56,7 +56,13 @@
 
   <% if i != 0 %>
   <div class="<%=classtext%>">
+ <% if user.avatar.file? %>
       <%= link_to image_tag(user.avatar(:medium), :size => "144x170"), user %>
+ 
+<% else %>
+        <%= link_to image_tag("siluett.jpg", :size => "144x170"), user %>
+   
+<% end %>
       <h1><%=link_to user.name, user %></h1>
       <%= raw format(truncate(user.bio, :length => 170, :separator => ' '))%>
    <div id="lesMer"><%= link_to 'Les mer', user %></div>
@@ -78,7 +84,14 @@
         <div id="greyBG">
       <% end %>
       <dt><%= link_to user.name, user %>  </dt>
+         <% if user.avatar.file? %>
         <dd class="listImg"><%= link_to image_tag(user.avatar(:medium), :size => "85x101"), user  %></dd>
+ 
+<% else %>
+       <dd class="listImg"> <%= link_to image_tag("siluett.jpg", :size => "85x101"), user %></dd>
+   
+<% end %>
+
 
       <dd class="content"><%= raw format(truncate(user.bio, :length => 150, :separator => ' '))%>Tekster: <% @articles = user.articles.all %>
     <% @articles = @articles.reverse %>
