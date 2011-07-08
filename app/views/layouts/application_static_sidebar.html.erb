@@ -3,6 +3,8 @@
 <p class="notice"><%= notice %></p>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
+  <meta property="fb:admins" content="{10150158906741422}"/>
+
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag 'prototype', 'rails', 'application', 'jquery', 'jquery.simplemodal-1.3.5.min', 'imgareaselect', 'jquery.nivo.slider' %>
   <script>
@@ -36,6 +38,7 @@ function byttVisning()
 }
 </script>
 
+
 <SCRIPT LANGUAGE="JavaScript">
 
 
@@ -68,6 +71,7 @@ document.write('<img src="'+theImages[whichImage]+'">');
 </script>
 
 
+
 </head>
 
 <body>
@@ -75,7 +79,7 @@ document.write('<img src="'+theImages[whichImage]+'">');
   <div id="omeny" class="grid_25"> <!-- Start Header -->
   <div id="ofaner">  
   <div id="bid">
-   <%= link_to 'Bidragsytere ', users_path %>
+   <%= link_to 'Bidragsytere', users_path %>
     
       <% @pages = Page.all %>
       <% @pages.each do |p| %>
@@ -114,16 +118,12 @@ document.write('<img src="'+theImages[whichImage]+'">');
 <div id="bakgrunn">
   <SCRIPT LANGUAGE="JavaScript">
     showImage();
-  </script>
+   </script>
 </div>
 
 <script type="text/javascript">
-var total = 10;
-var rand = Math.floor(Math.random()*total);
-
-
 $j(window).load(function() {
-      $j('#slider').nivoSlider({effect:'fade', startSlide:rand, pauseOnHover:false, controlNav:false,pauseTime:8000, prevText: '<-', nextText: '->', afterLoad: 
+      $j('#slider').nivoSlider({effect:'fade', pauseOnHover:false, controlNav:false,pauseTime:8000, prevText: '<-', nextText: '->', afterLoad: 
 	function() {
 		$j('#bakgrunn').css ("display", "none");
 	}
@@ -167,11 +167,8 @@ $j(window).load(function() {
 <div id="innholdsramme" class="grid_25">
 <div id="midtramme" class="grid_18">
   <%= yield %>
-</div><!-- Slutt midtramme -->
+</div><!-- Slutt midtramme  -->
 <div id="hoyreramme" class="grid_6">
-
-
-
 <div id="twitter">
         <script src="http://widgets.twimg.com/j/2/widget.js"></script>
         <script>
@@ -179,7 +176,7 @@ $j(window).load(function() {
             version: 2,
             type: 'search',
             search: '@Samfundet',
-            interval: 7000,
+            interval: 8000,
             title: '',
             subject: 'Samfundet på twitter',
             width: 'auto',
@@ -197,13 +194,13 @@ $j(window).load(function() {
             },
             features: {
               scrollbar: false,
-              loop: true,
+              loop: false,
               live: true,
               hashtags: true,
               timestamp: true,
               avatars: true,
               toptweets: true,
-              behavior: 'default'
+              behavior: 'all'
             }
           }).render().start();
         </script>
@@ -216,7 +213,7 @@ $j(window).load(function() {
             version: 2,
             type: 'search',
             search: 'uka11',
-            interval: 7000,
+            interval: 8000,
             title: '',
             subject: 'UKA på twitter',
             width: 'auto',
@@ -234,17 +231,18 @@ $j(window).load(function() {
             },
             features: {
               scrollbar: false,
-              loop: true,
+              loop: false,
               live: true,
               hashtags: true,
               timestamp: true,
               avatars: true,
               toptweets: true,
-              behavior: 'default'
+              behavior: 'all'
             }
           }).render().start();
         </script>
 </div>
+
 <div id="twitter">
         <script src="http://widgets.twimg.com/j/2/widget.js"></script>
         <script>
@@ -252,7 +250,7 @@ $j(window).load(function() {
             version: 2,
             type: 'search',
             search: '@isfit',
-            interval: 7000,
+            interval: 8000,
             title: '',
             subject: 'ISFiT på twitter',
             width: 'auto',
@@ -270,19 +268,20 @@ $j(window).load(function() {
             },
             features: {
               scrollbar: false,
-              loop: true,
+              loop: false,
               live: true,
               hashtags: true,
               timestamp: true,
               avatars: true,
               toptweets: true,
-              behavior: 'default'
+              behavior: 'all'
             }
           }).render().start();
         </script>
       </div>
 
- 
+
+
 </div><!-- Slutt hoyreramme -->
 
 </div><!-- Slutt innholdsramme -->

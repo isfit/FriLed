@@ -25,7 +25,7 @@ function byttVisning()
   if(document.getElementById('list').style.display=='none') {
     document.getElementById('taboloid').style.display='none';
     document.getElementById('list').style.display='block';
-  } 
+  }
   
   else {
     document.getElementById('taboloid').style.display='block';
@@ -42,7 +42,7 @@ function byttVisning()
 <body>
 <div id="hovedramme" class="container_24"> <!-- Start hovedramme -->
   <div id="omeny" class="grid_25"> <!-- Start Header -->
-  <div id="ofaner">  
+  <div id="ofaner">
   <div id="bid">
    <%= link_to 'Bidragsytere', users_path %>
     
@@ -58,7 +58,7 @@ function byttVisning()
       
     <% end %>
     <% if user_signed_in? %>
-      <%= link_to 'Logg ut', destroy_user_session_path %> 
+      <%= link_to 'Logg ut', destroy_user_session_path %>
       <%= link_to 'Min profil', current_user %>
       <%= link_to 'Ny tekst', new_article_path %>
      <% end %>
@@ -84,10 +84,10 @@ function byttVisning()
 </div>
 <script type="text/javascript">
 $j(window).load(function() {
-      $j('#slider').nivoSlider({effect:'fade', pauseOnHover:false, controlNav:false,pauseTime:8000, prevText: '<-', nextText: '->', afterLoad: 
-	function() {
-		$j('#bakgrunn').css ("display", "none");
-	}
+      $j('#slider').nivoSlider({effect:'fade', pauseOnHover:false, controlNav:false,pauseTime:8000, prevText: '<-', nextText: '->', afterLoad:
+function() {
+$j('#bakgrunn').css ("display", "none");
+}
 }
 );
 }
@@ -99,7 +99,7 @@ $j(window).load(function() {
 <div id="faner">
 
 <% @categories = Category.all %>
-<% if (request.request_uri == '/home/index') || (request.request_uri == '/')    %>
+<% if (request.request_uri == '/home/index') || (request.request_uri == '/') %>
   <% style="selected" %>
 <% else %>
   <% style="" %>
@@ -128,7 +128,7 @@ $j(window).load(function() {
 <div id="innholdsramme" class="grid_25">
 <div id="helsideramme" class="grid_24">
   <%= yield %>
-</div><!-- Slutt helsideramme  -->
+</div><!-- Slutt helsideramme -->
 
 
 </div><!-- Slutt innholdsramme -->

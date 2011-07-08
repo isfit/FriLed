@@ -15,6 +15,7 @@ class Ability
      can :read, :all
      can :create, Article
      can :update, Article, :user_id => user.id 
+     can :destroy, Article, :user_id => user.id
      can :update, User, :id => user.id
    else
      can :read, :all

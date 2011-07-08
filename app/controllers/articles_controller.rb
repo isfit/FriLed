@@ -83,7 +83,9 @@ class ArticlesController < ApplicationController
   private 
 
   def choose_layout    
-    if ['show', 'new', 'edit'].include? action_name
+    if ['show'].include? action_name
+      'application_static_sidebar'
+    elsif ['new', 'edit'].include? action_name 
       'application_no_sidebar'
     else
       'application'
