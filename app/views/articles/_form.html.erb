@@ -17,20 +17,19 @@
     <%= f.label :kategori%><br />
     <%= select("article", "category_id", Category.all.collect {|d| [ d.name, d.id ] }, {:include_blank => 'None'})%>    
   </div>
- <!-- Hvis kategori ikke i listen: <%= link_to 'Ny kategori', new_category_path %> <br /><br />-->
   <div class="field">
     <%= f.label :tittel %><br />
     <%= f.text_field :title %>
   </div><br />
 
   <% if can? :manage, Article %>
-  
-  Hvis video, legg inn youtube-koden her(11 tegn, både tall og bokstaver, står mot slutten av adressen).
-  <div class="field">
- 	<%= f.text_field :youtube_link %>
-  </div>
-  <br />
+    Hvis video, legg inn youtube-koden her(11 tegn, både tall og bokstaver, står mot slutten av adressen).
+    <div class="field">
+      <%= f.text_field :youtube_link %>
+    </div>
+    <br />
   <% end %>
+
   <div class="field">
     <%= f.label :innhold %>(Syntaks for formatering oppgitt nederst på siden.) <br />
     <%= f.text_area :content, :size => "95x40" %>

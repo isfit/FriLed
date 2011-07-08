@@ -13,24 +13,23 @@
 <% @articles.each do |article| %>
  <% if article.published == true %>   
    <% if i == 0 %>
-        <div id="whiteBG">
-      <% else %>
-        <div id="greyBG">
-      <% end %>
-      <dt><%= link_to article.title, article %>  </dt>
-      <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-     <% if article.user.avatar.file? %>
-  <dd class="listImg"><%= link_to image_tag(article.user.avatar(:medium), :size => "85x101"), article %></dd>
- 
-<% else %>
-       <dd class="listImg"> <%= link_to image_tag("siluett.jpg", :size => "85x101"), article %></dd>
+     <div id="whiteBG">
+   <% else %>
+     <div id="greyBG">
+   <% end %>
+   <dt><%= link_to article.title, article %>  </dt>
+     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
+       <% if article.user.avatar.file? %>
+         <dd class="listImg"><%= link_to image_tag(article.user.avatar(:medium), :size => "85x101"), article %></dd>
+       <% else %>
+         <dd class="listImg"> <%= link_to image_tag("siluett.jpg", :size => "85x101"), article %></dd>
    
-<% end %>
+       <% end %>
       
 
-      <% else %>
-        <dd class="listImg"> <iframe title="YouTube video player" width="70" height="70" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></dd>
-      <% end %>
+     <% else %>
+       <dd class="listImg"> <iframe title="YouTube video player" width="70" height="70" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></dd>
+     <% end %>
       
       <dd class="content"><%= raw format(truncate(article.content, :length => 150, :separator => ' '))%>Av: <%=  link_to article.user.name, article.user%> Kategori: <%= link_to article.category.name, article.category %></dd>     
      

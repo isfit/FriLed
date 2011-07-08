@@ -22,27 +22,26 @@
 <% i = 0 %>
 <% @articles.first(9).each do |article| %>
   <% if article.published == true %>
-  <% if i == 0 %>
-    <div id="hovedArtikkel" class="grid_18 alpha">
-    <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-     <% if article.user.avatar.file? %>
-    <%= link_to image_tag(article.user.avatar(:medium)), article %>
+    <% if i == 0 %>
+      <div id="hovedArtikkel" class="grid_18 alpha">
+      <% if article.youtube_link.nil?  || article.youtube_link == "" %>
+       <% if article.user.avatar.file? %>
+         <%= link_to image_tag(article.user.avatar(:medium)), article %>
  
-<% else %>
-        <%= link_to image_tag("siluett.jpg", :size => "255x300"), article %>
+       <% else %>
+         <%= link_to image_tag("siluett.jpg", :size => "255x300"), article %>
    
-<% end %>
+       <% end %>
 
-    <% else %>
-    <div style="float:left;padding-right:7px;">   <iframe title="YouTube video player" width="250" height="218" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
-    <% end %>
+      <% else %>
+        <div style="float:left;padding-right:7px;">   <iframe title="YouTube video player" width="250" height="218" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
+      <% end %>
     <h1><%=link_to article.title, article%></h1>
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
-    <h3><%= link_to article.user.name, article.user %></h3>
+      <h3><%= link_to article.user.name, article.user %></h3>
     <% end %>
     <p><%= raw format(truncate(article.content, :length => 530, :separator => ' '))%></p>
     <div id="lesMer"><%= link_to 'Les mer', article %></div>
-
    </div>
 
   <% elsif i == 1 %>
@@ -54,35 +53,33 @@
   <% end %>   
   
   <% if i != 0 %>
-  <div class="<%=classtext%>">
+    <div class="<%=classtext%>">
     <% if article.youtube_link.nil?  || article.youtube_link == "" %>
       <% if article.user.avatar.file? %>
         <%= link_to image_tag(article.user.avatar(:medium), :size => "144x170"), article %>
-
-<% else %>
-        <%= link_to image_tag("siluett.jpg", :size => "144x170"), article %>
-  
-<% end %>
+      <% else %>
+        <%= link_to image_tag("siluett.jpg", :size => "144x170"), article %>  
+      <% end %>
       <h1><%=link_to article.title, article%></h1>
     <% else %>
       <h1><%=link_to article.title, article%></h1>
       <div style="padding: 5px 0 0 5px"> <iframe title="YouTube video player" width="250" height="145" src="http://www.youtube.com/embed/<%= article.youtube_link %>?rel=0" frameborder="0" allowfullscreen></iframe></div>
     <% end %>
     <% if article.youtube_link.nil?  || article.youtube_link == "" %> 
-    <h3><%= link_to article.user.name, article.user %></h3>
+      <h3><%= link_to article.user.name, article.user %></h3>
     <% if article.title.length < 30 %>
       <%= raw format(truncate(article.content, :length => 125, :separator => ' '))%>
     <% else %>
       <%= raw format(truncate(article.content, :length => 100, :separator => ' '))%>
     <% end %> 
-   <div id="lesMer"><%= link_to 'Les mer', article %></div>
-   <% end %>
-   </div>
-   <% end %>
-   <% if i == 0 %>
-     <% i = 1 %>
-   <% end %>
+  <div id="lesMer"><%= link_to 'Les mer', article %></div>
   <% end %>
+  </div>
+  <% end %>
+  <% if i == 0 %>
+    <% i = 1 %>
+  <% end %>
+<% end %>
 <% end %>
 
 </div>
@@ -90,7 +87,6 @@
 
 <div id="list">
 <table id="artikkelOversikt">
-
   <tr>
     <th></th>
     <th>Tittel</th>

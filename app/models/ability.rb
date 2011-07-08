@@ -8,6 +8,7 @@ class Ability
      can :manage, :all 
      can :see_timestamps, User 
    elsif user.role? :editor
+     can :create, Category
      can :create, Article
      can :manage, Article
      can :read, :all

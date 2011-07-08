@@ -36,6 +36,38 @@ function byttVisning()
 
 </script>
 
+<SCRIPT LANGUAGE="JavaScript">
+
+
+var theImages = new Array() // do not change this
+
+theImages[0] = '/images/1.jpg'
+theImages[1] = '/images/2.jpg'
+theImages[2] = '/images/3.jpg'
+theImages[3] = '/images/4.jpg'
+theImages[4] = '/images/5.jpg'
+theImages[5] = '/images/6.jpg'
+theImages[6] = '/images/7.jpg'
+theImages[7] = '/images/8.jpg'
+theImages[8] = '/images/9.jpg'
+theImages[9] = '/images/10.jpg'
+
+
+var j = 0
+var p = theImages.length;
+var preBuffer = new Array()
+for (i = 0; i < p; i++){
+   preBuffer[i] = new Image()
+   preBuffer[i].src = theImages[i]
+}
+var whichImage = Math.round(Math.random()*(p-1));
+function showImage(){
+document.write('<img src="'+theImages[whichImage]+'">');
+}
+
+</script>
+
+
 
 </head>
 
@@ -81,6 +113,12 @@ function byttVisning()
 
 </div>
 <div id="bakgrunn">
+
+  <SCRIPT LANGUAGE="JavaScript">
+    showImage();
+  </script>
+
+
 </div>
 <script type="text/javascript">
 $j(window).load(function() {
