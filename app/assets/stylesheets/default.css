@@ -1,6 +1,6 @@
 
 body {	
-	background-image: url(../images/bakgrunner/g_lysGraa.png);
+	background-image: url(../assets/bakgrunner/g_lysGraa.png);
 	background-color:white;
 	
 }
@@ -11,12 +11,12 @@ body {
 }	
 
 #omeny {
-	background: url(../images/omeny-final3.jpg);
+	background: url(../assets/omeny-final3.jpg);
 	height:35px;
 }
 
 #umeny {
-	background: url(../images/umeny.png) repeat-x;
+	background: url(../assets/umeny.png) repeat-x;
 	height: 35px;
 }
 	
