@@ -16,6 +16,7 @@ gem 'mail'
 gem 'markdownizer'
 gem 'rdiscount'
 gem 'capistrano'
+gem 'therubyracer'
 
 
 group :assets do
