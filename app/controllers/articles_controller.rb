@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
     @article.published = false
     respond_to do |format|
       if @article.save
-        format.html { redirect_to(@article, :notice => 'Teksten ble opprettet. Den vil bli publisert så snart den blir godkjent av en moderator.') }
+        format.html { redirect_to(@article, :notice => 'Teksten ble opprettet. Den vil bli publisert saa snart den blir godkjent av en moderator.') }
         format.xml  { render :xml => @article, :status => :created, :location => @article }
       else
         format.html { render :action => "new" }

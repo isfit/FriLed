@@ -3,8 +3,8 @@
 <p class="notice"><%= notice %></p>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag 'prototype', 'rails', 'application', 'jquery', 'jquery.simplemodal-1.3.5.min', 'imgareaselect', 'jquery.nivo.slider' %>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
   <script>
   // this allows jquery to be called along with scriptaculous and YUI without any conflicts
   // the only difference is all jquery functions should be called with $j instead of $
@@ -138,7 +138,7 @@ $j(window).load(function() {
 <div id="faner">
 
 <% @categories = Category.all %>
-<% if (request.request_uri == '/home/index') || (request.request_uri == '/')    %>
+<% if (request.fullpath == '/home/index') || (request.fullpath == '/')    %>
   <% style="selected" %>
 <% else %>
   <% style="" %>
@@ -146,7 +146,7 @@ $j(window).load(function() {
 <%= link_to 'Siste', home_index_path, :class => style %><%= image_tag("men_sep.png", :class=>"menyspacer") %>
 <% @categories.each do |c| %>
   
-  <% if request.request_uri == '/categories/'+c.id.to_s() %>
+  <% if request.fullpath == '/categories/'+c.id.to_s() %>
   <% style="selected" %>
 <% else %>
   <% style="" %>
@@ -154,7 +154,7 @@ $j(window).load(function() {
 
   <%= link_to c.name, category_path(c), :class => style %><%= image_tag("men_sep.png", :class=>"menyspacer") %>
 <% end %>
-<% if request.request_uri == '/articles' %>
+<% if request.fullpath == '/articles' %>
   <% style="selected" %>
 <% else %>
   <% style="" %>

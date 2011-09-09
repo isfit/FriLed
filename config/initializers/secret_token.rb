@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-FriLed::Application.config.secret_token = 'f62c34bc95a0cd3578da3db07e4f9f19f0aedfb98e4808a17b8e1c488fb8aee0525d71aa9a650a348dc70e50ca07e001c83741df3307b8084537d9b060e5e63b'
+FriLed::Application.config.secret_token = '55629e5faac1083e05ae3015bc9701d94e28d7cf56275a07c70ed9e28dbaaced2571b673bd211b608615ea7cfacd83664e2eb1cb717da923f42deee274f5a60b'
