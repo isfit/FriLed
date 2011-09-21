@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 
-<p class="notice"><%= notice %></p>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
   <%= stylesheet_link_tag 'application' %>
@@ -112,7 +111,7 @@ document.write('<img src="'+theImages[whichImage]+'">');
 
 </div>
 <div id="bakgrunn">
-  <SCRIPT LANGUAGE="JavaScript">
+  <script type="text/javascript">
     showImage();
   </script>
 </div>
@@ -122,15 +121,13 @@ var total = 10;
 var rand = Math.floor(Math.random()*total);
 
 
-$j(window).load(function() {
-      $j('#slider').nivoSlider({effect:'fade', startSlide:rand, pauseOnHover:false, controlNav:false,pauseTime:8000, prevText: '<-', nextText: '->', afterLoad: 
-	function() {
-		$j('#bakgrunn').css ("display", "none");
-	}
-}
-);
-}
-);
+$(document).ready(function() {
+    $j('#slider').nivoSlider({effect:'fade', startSlide:rand, pauseOnHover:false, controlNav:false,pauseTime:8000, prevText: '<-', nextText: '->', afterLoad: 
+      function() {
+        $j('#bakgrunn').css ("display", "none");
+      }
+      });
+    });
 </script>
 </div><!-- Slutt sliderWrapper -->
 
@@ -138,27 +135,13 @@ $j(window).load(function() {
 <div id="faner">
 
 <% @categories = Category.all %>
-<% if (request.fullpath == '/home/index') || (request.fullpath == '/')    %>
-  <% style="selected" %>
-<% else %>
-  <% style="" %>
-<% end %>
+<% style =  ((request.fullpath == '/home/index') || (request.fullpath == '/')) ? "selected" : "" %>
 <%= link_to 'Siste', home_index_path, :class => style %><%= image_tag("men_sep.png", :class=>"menyspacer") %>
 <% @categories.each do |c| %>
-  
-  <% if request.fullpath == '/categories/'+c.id.to_s() %>
-  <% style="selected" %>
-<% else %>
-  <% style="" %>
-<% end %>
-
+  <% style = request.fullpath == '/categories/'+c.id.to_s ? "selected" : "" %>
   <%= link_to c.name, category_path(c), :class => style %><%= image_tag("men_sep.png", :class=>"menyspacer") %>
 <% end %>
-<% if request.fullpath == '/articles' %>
-  <% style="selected" %>
-<% else %>
-  <% style="" %>
-<% end %>
+<% style = request.fullpath == '/articles' ? "selected" : "" %>
 
 <%= link_to 'Alle', articles_path, :class => style %>
 </div>
@@ -166,11 +149,10 @@ $j(window).load(function() {
 
 <div id="innholdsramme" class="grid_25">
 <div id="midtramme" class="grid_18">
+  <p class="notice"><%= notice %></p>
   <%= yield %>
 </div><!-- Slutt midtramme -->
 <div id="hoyreramme" class="grid_6">
-
-
 
 <div id="twitter">
         <script src="http://widgets.twimg.com/j/2/widget.js"></script>
