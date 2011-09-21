@@ -136,28 +136,17 @@ $j('#bakgrunn').css ("display", "none");
 <div id="umeny" class="grid_25">
 <div id="faner">
 
+<div id="umeny" class="grid_25">
+<div id="faner">
+
 <% @categories = Category.all %>
-<% if (request.request_uri == '/home/index') || (request.request_uri == '/') %>
-  <% style="selected" %>
-<% else %>
-  <% style="" %>
-<% end %>
+<% style =  ((request.fullpath == '/home/index') || (request.fullpath == '/')) ? "selected" : "" %>
 <%= link_to 'Siste', home_index_path, :class => style %><%= image_tag("men_sep.png", :class=>"menyspacer") %>
 <% @categories.each do |c| %>
-  
-  <% if request.request_uri == '/categories/'+c.id.to_s() %>
-  <% style="selected" %>
-<% else %>
-  <% style="" %>
-<% end %>
-
+  <% style = request.fullpath == '/categories/'+c.id.to_s ? "selected" : "" %>
   <%= link_to c.name, category_path(c), :class => style %><%= image_tag("men_sep.png", :class=>"menyspacer") %>
 <% end %>
-<% if request.request_uri == '/articles' %>
-  <% style="selected" %>
-<% else %>
-  <% style="" %>
-<% end %>
+<% style = request.fullpath == '/articles' ? "selected" : "" %>
 
 <%= link_to 'Alle', articles_path, :class => style %>
 </div>
